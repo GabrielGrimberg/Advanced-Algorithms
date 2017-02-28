@@ -1,4 +1,4 @@
-# Advanced-Algorithms
+# Advanced Algorithms
 
 A repository for my learning and understandings of complex Algorithms that are graph related in Java.
 
