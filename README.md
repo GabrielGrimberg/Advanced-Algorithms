@@ -9,7 +9,7 @@ When you have a graph and you want to visit every node, you can do it using this
 - Time Complexity: O(V + E).
 - Memory Complexity: Not good, we have to store a lot of references.
 
-Iteration is available for Breadth First Search. We visit every vertex exactly once. We visit the neighbours then the neighbours of these new vertices and so on.
+Iteration is available for Breadth First Search for the Linked List approach and the Array approach. We visit every vertex exactly once. We visit the neighbours then the neighbours of these new vertices and so on.
 
 ##### Abstract Data Type for Depth First Search: Queue.
 
@@ -25,7 +25,7 @@ In computer science there are many useful algorithms that operate on a graph dat
 - Time Complexity: O(V + E).
 - Memory Complexity: A bit better than Breadth First Search.
 
-Recursion and Iteration available for Depth First Search, as far as the performance is concerned these two are approximately the same. So the speed of this algorithm is going to be the same even if you use the Recursion approach.
+Recursion used for the Linked List approach and the Array approach. Iteration available for the Array approach for this Depth First Search, as far as the performance is concerned these two are approximately the same. So the speed of this algorithm is going to be the same even if you use the Recursion approach.
 
 ##### Abstract Data Type for Depth First Search: Stack.
 
