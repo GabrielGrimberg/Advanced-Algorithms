@@ -106,7 +106,7 @@ class Queue
 	
 }
 
-class GraphMatrix 
+class BreadthFirstSearch 
 {
 	// V = number of vertices
 	// E = number of edges
@@ -119,7 +119,7 @@ class GraphMatrix
 	private int id;
 	 
 	//Default constructor
-	public GraphMatrix(String graphFile)  throws IOException
+	public BreadthFirstSearch(String graphFile)  throws IOException
 	{
 		int u, v;
 		int e, wgt;
@@ -240,7 +240,7 @@ class GraphMatrix
 		int s = 2;
 		String fname = "GraphExample.txt";               
 
-		GraphMatrix g = new GraphMatrix(fname);
+		BreadthFirstSearch g = new BreadthFirstSearch(fname);
 			 
 		g.display();
 		 
