@@ -2,7 +2,7 @@
     Name: Gabriel Grimberg
     Course: DT228/2
     Module: Algorithms & Data Structures
-    Type: Depth First Search
+    Type: Depth First Search (Array + Recurive Version)
 */
 
 import java.io.*;
