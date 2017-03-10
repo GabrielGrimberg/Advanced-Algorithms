@@ -25,10 +25,10 @@ The way Kruskal Algorithm works is:
 - Worst Case : O(E*LogE). E is for the edges in the graph.
 - Memory Complexity: Depending on the approach you take for example priority queue or sort the edge weights.
 
-- This algorithm can be used for huge graphs.
-- If the edges are sorted: The algorithm will be quasi-linear.
-- If we multiply the weights with a constant or add a constant to the edge weights: The results will be the same.
-- In this algorithm, the spanning trees are invariant under the transformation of these weights.
+This algorithm can be used for huge graphs.
+If the edges are sorted: The algorithm will be quasi-linear.
+If we multiply the weights with a constant or add a constant to the edge weights: The results will be the same.
+In this algorithm, the spanning trees are invariant under the transformation of these weights.
 
 ##### Abstract Data Type for Depth First Search: Stack.
 
