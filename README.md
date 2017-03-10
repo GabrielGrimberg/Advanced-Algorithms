@@ -2,7 +2,42 @@
 
 A repository for my learning and understandings of complex Algorithms that are graph related in Java.
 
-## Breadth First Search
+## Spanning Trees
+- A spanning tree of an undirected G graph is a subgraph that includes all the vertices of the G graph, 
+  but it usually doesn't include all the edges of this given graph.
+- In general, a tree may have several spanning trees.
+- We can assign a weight to each edge.
+- A minimum spanning tree is then a spanning tree with weight less than or equal to 
+  the weight of every other spanning tree.
+- Spannings Trees have a lot of applications such as Big Data Analysis, finding the minimum cost for a
+  telecommunications company laying out a cable into a new neighborhood.
+- Standard Algorithms: Prim's Algorithm and Kruskal Algorithm (Both of them are greedy algorithms).
+
+### Kruskal Algorithm
+The way Kruskal Algorithm works is:
+- We sort the edges according to their edge weights.
+- This can be done with a Mergesort or a Quicksort.
+- Then we must use a union find data structure or a disjoint set. So we start adding
+  edges to the MST and we want to make sure there will be no cycle in the MST.
+
+- Kruskal Algorithm is often used in computer networking.
+- Time Complexity: O(N*LogN) with Mergesort or Quicksort.
+- Worst Case : O(E*LogE). E is for the edges in the graph.
+- Memory Complexity: Depending on the approach you take for example priority queue or sort the edge weights.
+
+- This algorithm can be used for huge graphs.
+- If the edges are sorted: The algorithm will be quasi-linear.
+- If we multiply the weights with a constant or add a constant to the edge weights: The results will be the same.
+- In this algorithm, the spanning trees are invariant under the transformation of these weights.
+
+##### Abstract Data Type for Depth First Search: Stack.
+
+This Depth First Search is written in Java, uses recursion as it's more compact and includes the following features:
+- Method to initialise Depth First Traversal of Graph.
+- Recursive Depth First Traversal for the adjacency matrix.
+- Method to display the graph representation.
+
+### Breadth First Search
 When you have a graph and you want to visit every node, you can do it using this algorithm. Has serveral applications such as being used in the Dijkstra algorithm if all the edges weights are equal to one and in artificial intelligence.
 
 - Breadth First Search is used to constructs a shortest path.
@@ -18,7 +53,7 @@ This Breadth First Search is written in Java and uses the queue iteration.
 - Iteration Breadth First Traversal for the adjacency matrix.
 - Method to display the graph representation.
 
-## Depth First Search
+### Depth First Search
 In computer science there are many useful algorithms that operate on a graph data structure such as Depth First Search. Before this is implemented we need to consider how graphs are stored in computer memory. Saving it on text file is good as it can be used a secondary storage.
 
 - Depth First Search is a widely used graph traversal algorithm and used as a strategy to solve mazes.
