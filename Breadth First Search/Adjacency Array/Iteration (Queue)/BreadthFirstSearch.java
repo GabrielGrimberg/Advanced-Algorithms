@@ -111,7 +111,7 @@ class BreadthFirstSearch
 	// V = number of vertices
 	// E = number of edges
 	// adj[ ][ ] is the adjacency matrix
-	private int vert, edge;
+	private int V, E;
 	private int[][] adj;
 		
 	//Used for traversing graph
@@ -134,16 +134,16 @@ class BreadthFirstSearch
 		System.out.println(" ");
 		System.out.println("Parts[] = " + parts[0] + " " + parts[1]);
 				
-		vert = Integer.parseInt(parts[0]);
-		edge = Integer.parseInt(parts[1]);
+		V = Integer.parseInt(parts[0]);
+		E = Integer.parseInt(parts[1]);
 
-		adj = new int[vert+1][vert+1];        
-		visited = new int[vert+1];
+		adj = new int[V+1][V+1];        
+		visited = new int[V+1];
 		
 		System.out.println("Reading edges from text file");
 		System.out.println(" ");
 		
-		for(e = 1; e <= edge; ++e)
+		for(e = 1; e <= E; ++e)
 		{
 			line = reader.readLine();
 			parts = line.split(splits);
@@ -168,11 +168,11 @@ class BreadthFirstSearch
 	{
 		int u,v;
 		
-		for(v = 1; v <= vert; ++v)
+		for(v = 1; v <= V; ++v)
 		{
 			System.out.print("\nadj[" + v + "] = ");
 			
-			for(u = 1; u <= vert; ++u)
+			for(u = 1; u <= V; ++u)
 			{
 				System.out.print("  " + adj[u][v]);
 			}    
@@ -208,7 +208,7 @@ class BreadthFirstSearch
 		
 		id = 0;
 		
-		for(int v = 0; v < vert; v++)
+		for(int v = 0; v < V; v++)
 		{
 			visited[v] = 0;
 		}
