@@ -17,9 +17,9 @@ A repository for my learning and understandings of complex Algorithms that are g
 The way Kruskal Algorithm works is:
 - We sort the edges according to their edge weights.
 - This can be done with a Mergesort or a Quicksort.
-- Then we must use a union find data structure or a disjoint set. So we start adding
-  edges to the MST and we want to make sure there will be no cycle in the MST.
+- Then we must use a union find data structure also known as disjoint set. So we start adding edges to the MST and we want to make sure there will be no cycle in the MST.
 
+##### Information
 - Kruskal Algorithm is often used in computer networking.
 - Time Complexity: O(N*LogN) with Mergesort or Quicksort.
 - Worst Case : O(E*LogE). E is for the edges in the graph.
@@ -33,6 +33,7 @@ In this algorithm, the spanning trees are invariant under the transformation of 
 ### Breadth First Search
 When you have a graph and you want to visit every node, you can do it using this algorithm. Has serveral applications such as being used in the Dijkstra algorithm if all the edges weights are equal to one and in artificial intelligence.
 
+##### Information
 - Breadth First Search is used to constructs a shortest path.
 - Time Complexity: O(V + E).
 - Memory Complexity: Not good, we have to store a lot of references.
@@ -49,6 +50,7 @@ This Breadth First Search is written in Java and uses the queue iteration.
 ### Depth First Search
 In computer science there are many useful algorithms that operate on a graph data structure such as Depth First Search. Before this is implemented we need to consider how graphs are stored in computer memory. Saving it on text file is good as it can be used a secondary storage.
 
+##### Information
 - Depth First Search is a widely used graph traversal algorithm and used as a strategy to solve mazes.
 - Time Complexity: O(V + E).
 - Memory Complexity: A bit better than Breadth First Search.
