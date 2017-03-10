@@ -30,13 +30,6 @@ If the edges are sorted: The algorithm will be quasi-linear.
 If we multiply the weights with a constant or add a constant to the edge weights: The results will be the same.
 In this algorithm, the spanning trees are invariant under the transformation of these weights.
 
-##### Abstract Data Type for Depth First Search: Stack.
-
-This Depth First Search is written in Java, uses recursion as it's more compact and includes the following features:
-- Method to initialise Depth First Traversal of Graph.
-- Recursive Depth First Traversal for the adjacency matrix.
-- Method to display the graph representation.
-
 ### Breadth First Search
 When you have a graph and you want to visit every node, you can do it using this algorithm. Has serveral applications such as being used in the Dijkstra algorithm if all the edges weights are equal to one and in artificial intelligence.
 
