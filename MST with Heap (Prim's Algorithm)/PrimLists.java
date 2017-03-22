@@ -10,16 +10,17 @@ import java.io.*;
 
 class Heap
 {
-    private int[] h;	   // heap array
+    private int[] h;	   // Heap array
     private int[] hPos;	   // hPos[h[k]] == k
     private int[] dist;    // dist[v] = priority of v
-
-    private int N;         // heap size
+    
+    //Size of heap.
+    private int N;
    
     // The heap constructor gets passed from the Graph:
-    //    1. maximum heap size
-    //    2. reference to the dist[] array
-    //    3. reference to the hPos[] array
+    // 1. Maximum heap size
+    // 2. Reference to the dist[] array
+    // 3. Reference to the hPos[] array
     public Heap(int maxSize, int[] _dist, int[] _hPos) 
     {
         N = 0;
@@ -27,8 +28,8 @@ class Heap
         dist = _dist;
         hPos = _hPos;
     }
-
-
+    
+    //Method that checks if the heap is empty.
     public boolean isEmpty() 
     {
         return N == 0;
@@ -37,10 +38,32 @@ class Heap
 
     public void siftUp( int k) 
     {
+        //Current position of the vertex.
         int v = h[k];
-
-        // code yourself
-        // must use hPos[] and dist[] arrays
+        
+        //Making a dummy node to place at the top of the heap.
+        h[0] = 0;
+        
+        //Smallest value into distance 0 so it can be compared.
+        dist[0] = Integer.MIN_VALUE;
+        
+        //While distance value at the current element.
+        //Is less than the distance value at k / 2.
+        //Keep dividing going up the list to insert the element
+        //At the correct place.
+        while(dist[v] < dist[ h[k / 2] ])
+        {
+            //If not found, then siftUp the value to next value.
+            h[k] = h[k / 2];
+            hPos[ h[k] ] = k;
+            
+            //Then divide the element by 2 to go up.
+            k = k / 2;
+        }
+        
+        //Insert Vertex into the correct place on to the heap array.
+        h[k] = v;
+        hPos[v] = k;
     }
 
 
@@ -214,6 +237,4 @@ public class PrimLists
                
         
     }
-    
-    
 }
