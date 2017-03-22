@@ -73,23 +73,55 @@ class Heap
        
         v = h[k];  
         
-        // code yourself 
-        // must use hPos[] and dist[] arrays
+        j = 2 * k;
+        
+        while(j <= N)
+        {
+            if( (j + 1 <= N) && dist[ h[j] ] > dist[ h[j + 1] ] )
+            {
+                j++; //Next element.
+            }
+            
+            //If the distance of vertex element we are currently on is
+            //Greater than the vertex we are sifting down then abort.
+            if( dist[ h[j] ] >= dist[v] )
+            {
+                break;
+            }
+            //if it's not then continue down the list.
+            else
+            {
+                h[k] = h[j];
+                k = j;
+                j = k * 2;
+            }
+        }
+        
+        //When the right position is found put it into the array.
+        h[k] = v;
+        hPos[v] = k;
     }
 
 
     public void insert( int x) 
     {
+        //Adding a new vertex onto the end of the heap array.
         h[++N] = x;
+        
+        //Sifting up the vertex to find the correct location.
         siftUp( N);
     }
 
-
     public int remove() 
-    {   
+    {
+        //Give the element a 0 value then sift it down.  
         int v = h[1];
-        hPos[v] = 0; // v is no longer in heap
-        h[N+1] = 0;  // put null node into empty spot
+        
+        //V is no longer in heap.
+        hPos[v] = 0;
+        
+        //Put null node into empty spot
+        h[N+1] = 0;
         
         h[1] = h[N--];
         siftDown(1);
