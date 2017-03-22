@@ -6,11 +6,10 @@
 	Code: Kruskal's Algorithm.
 */
 
-using System;
-using System.IO;
+import java.io.*;
+import java.util.Scanner;
 
-	// convert vertex into char for pretty printing
- 
+//Convert vertex into char for pretty printing 
 class Edge 
 {
 	
@@ -18,7 +17,7 @@ class Edge
 	
 	public void show() 
 	{
-		Console.Write("Edge {0}-{1}-{2}\n",toChar(u), wgt, toChar(v)) ;
+		System.out.print("Edge {0}-{1}-{2}\n",toChar(u), wgt, toChar(v)) ;
 	}
 	
 	// convert vertex into char for pretty printing
@@ -35,7 +34,6 @@ class Heap
 	int N, Nmax;
 	Edge[] edge;
 
-
 	// Bottom up heap constructor
 	public Heap(int _N, Edge[] _edge) 
 	{
@@ -46,13 +44,17 @@ class Heap
 	   
 		// initially just fill heap array with 
 		// indices of edge[] array.
-		for (i=0; i <= N; ++i) 
+		for (i=0; i <= N; ++i)
+		{
 			h[i] = i;
+		}
 		   
 		// Then convert h[] into a heap
 		// from the bottom up.
 		for(i = N/2; i > 0; --i)
+		{
 			siftDown(i);
+		}
 	}
 
 
@@ -103,9 +105,11 @@ class UnionFindSets
 	public void showTrees()
 	{
 		int i;
-		for(i=1; i<=N; ++i)
-			Console.Write("{0}->{1}  ", toChar(i), toChar(treeParent[i]));
-		Console.Write("\n");
+		for(i = 1; i <= N; ++i)
+		{
+			System.out.print("{0}->{1}  ", toChar(i), toChar(treeParent[i]));
+		}
+		System.out.print("\n");
 	}
 	
 	public void showSets()
@@ -136,22 +140,25 @@ class Graph
 		int u, v;
 		int w, e;
 
-		StreamReader reader = new StreamReader(graphFile);
-	   
-	    char[] splits = new char[] { ' ', ',', '\t'};     
-		string line = reader.ReadLine();
-		string[] parts = line.Split(splits, StringSplitOptions.RemoveEmptyEntries);
+		FileReader fr = new FileReader(graphFile);
+		BufferedReader reader = new BufferedReader(fr);
+		
+		String splits = " +";
+		String line = reader.readLine();        
+		
+		String[] parts = line.split(splits);
+		System.out.println("Parts[] = " + parts[0] + " " + parts[1]);
 		
 		// find out number of vertices and edges
-		V = int.Parse(parts[0]);
-		E = int.Parse(parts[1]);
+		V = Integer.parseInt(parts[0]);
+		E = Integer.parseInt(parts[1]);
 
 		
 		// create edge array
-	   // missing code   
+	   	// missing code   
 		
 		// read the edges
-		Console.WriteLine("Reading edges from text file");
+		System.out.print("Reading edges from text file");
 	    for(e = 1; e <= E; ++e)
 	    {
 			line = reader.ReadLine();
@@ -160,42 +167,42 @@ class Graph
 			v = int.Parse(parts[1]); 
 			w = int.Parse(parts[2]);
 			
-			Console.WriteLine("Edge {0}--({1})--{2}", toChar(u), w, toChar(v));    
+			System.out.print("Edge {0}--({1})--{2}", toChar(u), w, toChar(v));    
 			 
 			// missing code
 		}
 	}
 
 
-/**********************************************************
-*
-*       Kruskal's minimum spanning tree algorithm
-*
-**********************************************************/
-public Edge[] MST_Kruskal() 
-{
-	int ei, i = 0;
-	Edge e;
-	int uSet, vSet;
-	UnionFindSets partition;
-	
-	// create edge array to store MST
-	// Initially it has no edges.
-	mst = new Edge[V-1];
-
-	// priority queue for indices of array of edges
-	// missing code
-
-	// create partition of singleton sets for the vertices
-	// missing code
-	partition.showSets();
-
-	while(i < V-1) 
+	/**********************************************************
+	*
+	*       Kruskal's minimum spanning tree algorithm
+	*
+	**********************************************************/
+	public Edge[] MST_Kruskal() 
 	{
- 
+		int ei, i = 0;
+		Edge e;
+		int uSet, vSet;
+		UnionFindSets partition;
+		
+		// create edge array to store MST
+		// Initially it has no edges.
+		mst = new Edge[V-1];
+
+		// priority queue for indices of array of edges
+		// missing code
+
+		// create partition of singleton sets for the vertices
+		// missing code
+		partition.showSets();
+
+		while(i < V-1) 
+		{
+	 
+		}
+		return mst;
 	}
-	return mst;
-}
 
 
 	// convert vertex into char for pretty printing
@@ -206,21 +213,25 @@ public Edge[] MST_Kruskal()
 
 	public void showMST()
 	{
-		Console.Write("\nMinimum spanning tree build from following edges:\n");
+		System.out.print("\nMinimum spanning tree build from following edges:\n");
 		for(int e = 0; e < V-1; ++e) 
 		{
 			mst[e].show(); 
 		}
-		Console.WriteLine();
+		//Console.WriteLine();
 	   
 	}
+	
+}
 
-	// test code
-	public static int Main() 
+public class Kruskal
+{
+	public static void main(String args[]) throws IOException 
 	{
-		string fname = "wGraph3.txt";
-		Console.Write("\nInput name of file with graph definition: ");
-		fname = Console.ReadLine();
+		Scanner in = new Scanner(System.in);
+		
+		System.out.print("\nInput name of file with graph definition: ");
+		String fname = in.nextLine();
 
 		Graph g = new Graph(fname);
 
@@ -230,5 +241,5 @@ public Edge[] MST_Kruskal()
 		
 		return 0;
 	}
-
-} // end of Graph class
+	
+}
