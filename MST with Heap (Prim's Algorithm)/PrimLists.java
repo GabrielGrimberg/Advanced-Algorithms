@@ -140,20 +140,20 @@ class Graph
         public Node next;
     }
     
-    // V = number of vertices
-    // E = number of edges
-    // adj[] is the adjacency lists array
+    //V = number of vertices
+    //E = number of edges
+    //adj[] is the adjacency lists array
     private int V, E;
     private Node[] adj;
     private Node z;
     private int[] mst;
     
-    // used for traversing graph
+    //Used for traversing graph
     private int[] visited;
     private int id;
     
     
-    // default constructor
+    //Default constructor
     public Graph(String graphFile)  throws IOException
     {
         int u, v;
@@ -162,8 +162,9 @@ class Graph
 
         FileReader fr = new FileReader(graphFile);
 		BufferedReader reader = new BufferedReader(fr);
-	           
-        String splits = " +";  // multiple whitespace as delimiter
+
+        //Multiple whitespace as delimiter
+        String splits = " +";
 		String line = reader.readLine();        
         String[] parts = line.split(splits);
         System.out.println("Parts[] = " + parts[0] + " " + parts[1]);
@@ -171,16 +172,16 @@ class Graph
         V = Integer.parseInt(parts[0]);
         E = Integer.parseInt(parts[1]);
         
-        // create sentinel node
+        //Create sentinel node
         z = new Node(); 
         z.next = z;
         
-        // create adjacency lists, initialised to sentinel node z       
+        //Create adjacency lists, initialised to sentinel node z       
         adj = new Node[V+1];        
         for(v = 1; v <= V; ++v)
             adj[v] = z;               
         
-       // read the edges
+        //Read the edges
         System.out.println("Reading edges from text file");
         for(e = 1; e <= E; ++e)
         {
@@ -192,26 +193,40 @@ class Graph
             
             System.out.println("Edge " + toChar(u) + "--(" + wgt + ")--" + toChar(v));    
             
-            // write code to put edge into adjacency matrix     
+            //Putting edge into adjacency matrix into the linked list.
+            insertEdge(u, wgt, v); 
+            insertEdge(v, wgt, u);
             
         }	       
     }
    
-    // convert vertex into char for pretty printing
+    //Convert vertex into char for pretty printing
     private char toChar(int u)
     {  
         return (char)(u + 64);
     }
     
-    // method to display the graph representation
+    //Method to insert new values into the linked list.		
+    public void insertEdge(int i, int x, int vert)
+    {
+        Node node = new Node();
+        node.wgt = x;
+        node.vert = vert;
+        node.next = adj[i];
+            
+        adj[i] = node;
+    }
+    
+    //Method to display the graph representation
     public void display() 
     {
         int v;
         Node n;
         
-        for(v=1; v<=V; ++v)
+        for(v = 1; v <= V; ++v)
         {
             System.out.print("\nadj[" + toChar(v) + "] ->" );
+            
             for(n = adj[v]; n != z; n = n.next) 
             {
                 System.out.print(" |" + toChar(n.vert) + " | " + n.wgt + "| ->");    
