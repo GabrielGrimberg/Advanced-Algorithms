@@ -3,7 +3,7 @@
     Course: DT228/2.
     Module: Algorithms & Data Structures.
     Type: Final Year Assignment.
-    Code: Prim List Using a Heap.
+    Code: Prim's Algorithm using a Priority Queue(Heap).
 */
 
 import java.io.*;
@@ -243,7 +243,7 @@ class Graph
             parent[v] := 0         // treat 0 as a special null vertex
             hPos[v] := 0           // indicates that v   heap
             
-        h = new Heap(|𝑉|, h𝑃𝑜𝑠, 𝑑𝑖𝑠𝑡) // priority queue (heap) initially empty
+        h = new Heap(|V|, hPos, dist) // priority queue (heap) initially empty
         h.insert(s)                 // s will be the root of the MST
         
         while (not h.isEmpty() )    // should repeat |V|-1 times
@@ -274,17 +274,65 @@ class Graph
         int[]  dist, parent, hPos;
         Node t;
 
-        //code here
+        dist = new int[V + 1];      //Distance from node to node.
+        parent = new int[V + 1];    //Parent node.
+        hPos = new int[V + 1];      //Current heap position.
         
-        dist[s] = 0;
         
+        for(v = 0; v <= V; v++) 
+        {	
+            dist[v] = Integer.MAX_VALUE; //Set to infinity.
+            
+            parent[v] = 0; //Treat 0 as a special null vertex.
+            
+            hPos[v] = 0; //Indicates that it's not on the heap.
+        }
+        
+        //Creating a new empty priority heap.
         Heap pq =  new Heap(V, dist, hPos);
+        
+        //Insert first element into the heap, s is used a the root of the MST.
         pq.insert(s);
         
-        while ( ...)  
+        //Set the distance to 0.
+        dist[s] = 0;
+        
+        
+        while (!pq.isEmpty()) 
         {
-            // most of alg here
+            v = pq.remove(); //Adding V to the MST.
+            dist[v] = -dist[v]; //Marking V as in the MST.
             
+            Node n;
+            int w;
+            
+            //Examine each neighbour u of v.
+            for (n = adj[v]; n != z; n = n.next) 
+            {
+                u = n.vert;
+                w = n.wgt;
+                
+                if (w < dist[u]) 
+                {
+                    if (dist[u] != Integer.MAX_VALUE) 
+                    {
+                        wgt_sum -= dist[u];
+                    }
+
+                    dist[u] = w;
+                    parent[u] = v;
+                    wgt_sum += w;
+
+                    if (hPos[u] == 0) 
+                    {
+                        pq.insert(u);
+                    } 
+                    else 
+                    {
+                        pq.siftUp(hPos[u]);
+                    }
+                }
+            }
         }
         System.out.print("\n\nWeight of MST = " + wgt_sum + "\n");
         
@@ -309,12 +357,13 @@ public class PrimLists
     public static void main(String[] args) throws IOException
     {
         int s = 2;
-        String fname = "wGraph3.txt";               
+        String fname = "GraphExample.txt";               
 
         Graph g = new Graph(fname);
        
-        g.display();
+        g.display();     //Display the graph.
+        g.MST_Prim(s);   //Performe Algorithm and display the weight of it.
+        g.showMST();     //Show the MST.
                
-        
     }
 }
