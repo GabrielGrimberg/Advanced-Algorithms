@@ -7,6 +7,7 @@
 */
 
 import java.io.*;
+import java.util.Scanner; //For keyboard input.
 
 class Heap
 {
@@ -356,13 +357,20 @@ public class PrimLists
 {
     public static void main(String[] args) throws IOException
     {
-        int s = 2;
-        String fname = "GraphExample.txt";               
-
+        Scanner keyInput = new Scanner(System.in);
+        
+        //Entering the file name.
+        System.out.println("Enter the name of the file including the .txt : ");
+        String fname = keyInput.nextLine(); 
+        
+        //Entering the starting vertex.
+        System.out.println("Enter the vertex you wish to start on : ");
+        int startVertex = keyInput.nextInt();             
+        
         Graph g = new Graph(fname);
        
         g.display();     //Display the graph.
-        g.MST_Prim(s);   //Performe Algorithm and display the weight of it.
+        g.MST_Prim(startVertex);   //Performe Algorithm and display the weight of it.
         g.showMST();     //Show the MST.
                
     }
