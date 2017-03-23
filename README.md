@@ -13,6 +13,21 @@ A repository for my learning and understandings of complex Algorithms that are g
   telecommunications company laying out a cable into a new neighborhood.
 - Standard Algorithms: Prim's Algorithm and Kruskal Algorithm (Both of them are greedy algorithms).
 
+### Prim's Algorithm
+The way Prim's Algorithm works is:
+- The algorithm continuously increases the size of a tree, one edge at a time, starting with a tree consisting of a single vertex, until it spans all vertices.
+
+##### Information
+- Prim's algorithm is a greedy algorithm that finds a minimum spanning tree for a connected weighted undirected graph.
+- This means it finds a subset of the edges that forms a tree that includes every vertex, where the total weight of all the edges in the tree is minimized.
+- Time Complexity for: Binary heap and adjacency lists for sparse graph = O(V^2).
+- Time Complexity for: Adjacency matrix for dense or sparse graph = O(V^2 logV).
+- Time Complexity for: Fibonacci heap and adjacency list = O( E + V log V ).
+
+Furthermore, adjacency lists use only the required memory for sparse graphs and are more efficient space wise for sparse graphs. Matrix representation is very inefficient both memory wise and in performance for sparse graphs.
+
+Better to use an adjacency matrix for a dense graph, in which case which gives complexity O(V^2) and adjacency lists for sparse graphs O(V log2 V).
+
 ### Kruskal Algorithm
 The way Kruskal Algorithm works is:
 - We sort the edges according to their edge weights.
