@@ -34,7 +34,7 @@ class Heap
 	int N, Nmax;
 	Edge[] edge;
 
-	// Bottom up heap constructor
+	//Bottom up heap constructor
 	public Heap(int _N, Edge[] _edge) 
 	{
 		int i;
@@ -42,27 +42,49 @@ class Heap
 		h = new int[N+1];
 		edge = _edge;
 	   
-		// initially just fill heap array with 
-		// indices of edge[] array.
+		//Initially just fill heap array with 
+		//Indices of edge[] array.
 		for (i=0; i <= N; ++i)
 		{
 			h[i] = i;
 		}
 		   
-		// Then convert h[] into a heap
-		// from the bottom up.
+		//Then convert h[] into a heap
+		//From the bottom up.
 		for(i = N/2; i > 0; --i)
 		{
 			siftDown(i);
 		}
 	}
-
-
-
-
+	
 	private void siftDown( int k) 
 	{
- 
+		int v =  h[k];
+		int j = 2 * k;
+		
+		//If you have a left child.
+		while(j <= N)
+		{
+			if(j < N && h[j + 1] > h[j])
+			{
+				++j;
+			}
+
+			if(v >= h[j])
+			{
+				System.exit(0);
+			}
+			else
+			{
+				h[k] = h[j];
+				k = j;
+				j = 2 * k;
+			}
+
+		}
+
+		h[k] = v;
+		
 	}
 
 
@@ -81,25 +103,40 @@ class Heap
 *       Implemented simply using Discrete Set Trees			       *
 *        	 												       *
 ********************************************************************/
-
 class UnionFindSets
 {
 	private int[] treeParent;
 	private int N;
 	
-	public UnionFindSets( int V)
+	public UnionFindSets(int V)
 	{
 	   
 	}
+	
+	public void makeSet(x)
+	{
+		treeParent[x] = x;
+	}
 
 	public int findSet( int vertex)
-	{   
-	   
+	{
+		if(treeParent[vertex] == vertex)
+		{
+			return vertex;
+		}
+		else
+		{
+			return findSet(treeParent[vertex]);
+		}
+	
 	}
 	
 	public void union( int set1, int set2)
 	{
-	  
+		int xRoot = findSet(set1);
+		int yRoot = findSet(set2);
+		
+		treeParent[yRoot] = xRoot;
 	}
 	
 	public void showTrees()
@@ -149,15 +186,15 @@ class Graph
 		String[] parts = line.split(splits);
 		System.out.println("Parts[] = " + parts[0] + " " + parts[1]);
 		
-		// find out number of vertices and edges
+		//Find out number of vertices and edges
 		V = Integer.parseInt(parts[0]);
 		E = Integer.parseInt(parts[1]);
 
 		
-		// create edge array
-	   	// missing code   
+		//Create edge array
+	   	//Missing code   
 		
-		// read the edges
+		//Read the edges
 		System.out.print("Reading edges from text file");
 	    for(e = 1; e <= E; ++e)
 	    {
@@ -169,7 +206,7 @@ class Graph
 			
 			System.out.print("Edge {0}--({1})--{2}", toChar(u), w, toChar(v));    
 			 
-			// missing code
+			//Missing code
 		}
 	}
 
@@ -186,15 +223,15 @@ class Graph
 		int uSet, vSet;
 		UnionFindSets partition;
 		
-		// create edge array to store MST
-		// Initially it has no edges.
+		//Create edge array to store MST
+		//Initially it has no edges.
 		mst = new Edge[V-1];
 
-		// priority queue for indices of array of edges
-		// missing code
+		//Priority queue for indices of array of edges
+		//Missing code
 
-		// create partition of singleton sets for the vertices
-		// missing code
+		//Create partition of singleton sets for the vertices
+		//Missing code
 		partition.showSets();
 
 		while(i < V-1) 
@@ -205,7 +242,7 @@ class Graph
 	}
 
 
-	// convert vertex into char for pretty printing
+	//Convert vertex into char for pretty printing
 	private char toChar(int u)
 	{  
 		return (char)(u + 64);
