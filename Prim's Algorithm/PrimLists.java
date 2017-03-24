@@ -24,10 +24,10 @@ class Heap
     // 3. Reference to the hPos[] array
     public Heap(int maxSize, int[] _dist, int[] _hPos) 
     {
-        N = 0;
+        N = 0;                     //Assume size of heap is 0.
         h = new int[maxSize + 1];
-        dist = _dist;
-        hPos = _hPos;
+        dist = _dist;              //Given as parameters and you intiliasie them.
+        hPos = _hPos;              //Given as parameters and you intiliasie them.
     }
     
     //Method that checks if the heap is empty.
@@ -43,10 +43,10 @@ class Heap
         int v = h[k];
         
         //Making a dummy node to place at the top of the heap.
-        h[0] = 0;
+        //h[0] = 0;
         
         //Smallest value into distance 0 so it can be compared.
-        dist[0] = Integer.MIN_VALUE;
+        dist[0] = 0;
         
         //While distance value at the current element.
         //Is less than the distance value at k / 2.
@@ -68,7 +68,7 @@ class Heap
     }
 
 
-    public void siftDown( int k) 
+    public void siftDown(int k) 
     {
         int v, j;
        
@@ -178,9 +178,12 @@ class Graph
         z.next = z;
         
         //Create adjacency lists, initialised to sentinel node z       
-        adj = new Node[V+1];        
+        adj = new Node[V+1];
+        
         for(v = 1; v <= V; ++v)
-            adj[v] = z;               
+        {
+            adj[v] = z;   
+        }
         
         //Read the edges
         System.out.println("Reading edges from text file");
@@ -195,8 +198,17 @@ class Graph
             System.out.println("Edge " + toChar(u) + "--(" + wgt + ")--" + toChar(v));    
             
             //Putting edge into adjacency matrix into the linked list.
-            insertEdge(u, wgt, v); 
-            insertEdge(v, wgt, u);
+            t = new Node();
+            t.wgt = wgt;
+            t.vert = v;
+            t.next = adj[u];
+            adj[u] = t;
+
+            t = new Node();
+            t.wgt = wgt;
+            t.vert = u;
+            t.next = adj[v];
+            adj[v] = t;
             
         }	       
     }
@@ -206,18 +218,7 @@ class Graph
     {  
         return (char)(u + 64);
     }
-    
-    //Method to insert new values into the linked list.		
-    public void insertEdge(int i, int x, int vert)
-    {
-        Node node = new Node();
-        node.wgt = x;
-        node.vert = vert;
-        node.next = adj[i];
-            
-        adj[i] = node;
-    }
-    
+        
     //Method to display the graph representation
     public void display() 
     {
@@ -228,6 +229,7 @@ class Graph
         {
             System.out.print("\nadj[" + toChar(v) + "] ->" );
             
+            //Go through the vertices, for each one start at the beginning of the Linked List.
             for(n = adj[v]; n != z; n = n.next) 
             {
                 System.out.print(" |" + toChar(n.vert) + " | " + n.wgt + "| ->");    
@@ -290,6 +292,7 @@ class Graph
         }
         
         //Creating a new empty priority heap.
+        //V is the max size of the heap array.
         Heap pq =  new Heap(V, dist, hPos);
         
         //Insert first element into the heap, s is used a the root of the MST.

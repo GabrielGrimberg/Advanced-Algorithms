@@ -87,7 +87,6 @@ class Heap
 		
 	}
 
-
 	public int remove() 
 	{
 		h[0] = h[1];
@@ -110,7 +109,11 @@ class UnionFindSets
 	
 	public UnionFindSets(int V)
 	{
-	   
+		while(V != treeParent[V])
+		{
+			V = treeParent[V];
+		}
+		return V;	   
 	}
 	
 	public void makeSet(x)
@@ -118,7 +121,7 @@ class UnionFindSets
 		treeParent[x] = x;
 	}
 
-	public int findSet( int vertex)
+	public int findSet(int vertex)
 	{
 		if(treeParent[vertex] == vertex)
 		{
@@ -151,7 +154,7 @@ class UnionFindSets
 	
 	public void showSets()
 	{
-
+		
 	}
 
 	private void showSet(int root)
@@ -192,25 +195,45 @@ class Graph
 
 		
 		//Create edge array
-	   	//Missing code   
+	   	//Create sentinel node
+		z = new Node(); 
+		z.next = z;
+	
+		//Create adjacency lists, initialised to sentinel node z       
+		adj = new Node[V+1];
+	
+		for(v = 1; v <= V; ++v)
+		{
+			adj[v] = z;   
+		} 
 		
 		//Read the edges
 		System.out.print("Reading edges from text file");
+		
 	    for(e = 1; e <= E; ++e)
 	    {
-			line = reader.ReadLine();
-			parts = line.Split(splits, StringSplitOptions.RemoveEmptyEntries);
+			line = reader.readLine();
+			parts = line.split(splits);
 			u = int.Parse(parts[0]);
 			v = int.Parse(parts[1]); 
 			w = int.Parse(parts[2]);
 			
 			System.out.print("Edge {0}--({1})--{2}", toChar(u), w, toChar(v));    
 			 
-			//Missing code
+			t = new Node();
+			t.wgt = wgt;
+			t.vert = v;
+			t.next = adj[u];
+			adj[u] = t;
+
+			t = new Node();
+			t.wgt = wgt;
+			t.vert = u;
+			t.next = adj[v];
+			adj[v] = t;
 		}
 	}
-
-
+	
 	/**********************************************************
 	*
 	*       Kruskal's minimum spanning tree algorithm
@@ -251,7 +274,7 @@ class Graph
 	public void showMST()
 	{
 		System.out.print("\nMinimum spanning tree build from following edges:\n");
-		for(int e = 0; e < V-1; ++e) 
+		for(int e = 0; e < V - 1; ++e) 
 		{
 			mst[e].show(); 
 		}
@@ -275,8 +298,7 @@ public class Kruskal
 		g.MST_Kruskal();
 
 		g.showMST();
-		
-		return 0;
+
 	}
 	
 }
