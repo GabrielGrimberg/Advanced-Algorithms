@@ -12,8 +12,19 @@ import java.util.Scanner;
 //Convert vertex into char for pretty printing 
 class Edge 
 {
-	
-	// missing code
+	public int u, v, wgt;
+
+	public Edge() 
+	{
+		u = 0;
+		v = 0;
+		wgt = 0;
+	}
+
+	public Edge(int x, int y, int w) 
+	{
+		;// missing lines
+	}
 	
 	public void show() 
 	{
@@ -57,7 +68,7 @@ class Heap
 		}
 	}
 	
-	private void siftDown( int k) 
+	private void siftDown(int k) 
 	{
 		int v =  h[k];
 		int j = 2 * k;
@@ -109,11 +120,9 @@ class UnionFindSets
 	
 	public UnionFindSets(int V)
 	{
-		while(V != treeParent[V])
-		{
-			V = treeParent[V];
-		}
-		return V;	   
+		N = V;
+		treeParent = new int[V+1];
+		// missing lines	   
 	}
 	
 	public void makeSet(x)
@@ -154,12 +163,35 @@ class UnionFindSets
 	
 	public void showSets()
 	{
+		int u, root;
+		int[] shown = new int[N+1];
 		
+		for (u = 1; u <= N; ++u)
+		{   
+			root = findSet(u);
+			
+			if(shown[root] != 1) 
+			{
+				showSet(root);
+				shown[root] = 1;
+			}            
+		}   
+		System.out.print("\n");
 	}
 
 	private void showSet(int root)
 	{
-
+		int v;
+		System.out.print("Set{");
+		
+		for(v = 1; v <= N; ++v)
+		{
+			if(findSet(v) == root)
+			{
+				System.out.print(toChar(v) + " ");
+			}
+		}
+		System.out.print("}  ");
 	
 	}
 	
@@ -175,50 +207,37 @@ class Graph
 	private Edge[] edge;
 	private Edge[] mst;        
 
-	public Graph(string graphFile) 
+	public Graph(String graphFile) throws IOException
 	{
 		int u, v;
 		int w, e;
 
 		FileReader fr = new FileReader(graphFile);
 		BufferedReader reader = new BufferedReader(fr);
-		
-		String splits = " +";
+	           
+		String splits = " +";  //Multiple whitespace as delimiter
 		String line = reader.readLine();        
-		
 		String[] parts = line.split(splits);
 		System.out.println("Parts[] = " + parts[0] + " " + parts[1]);
 		
-		//Find out number of vertices and edges
 		V = Integer.parseInt(parts[0]);
 		E = Integer.parseInt(parts[1]);
-
 		
 		//Create edge array
-	   	//Create sentinel node
-		z = new Node(); 
-		z.next = z;
-	
-		//Create adjacency lists, initialised to sentinel node z       
-		adj = new Node[V+1];
-	
-		for(v = 1; v <= V; ++v)
-		{
-			adj[v] = z;   
-		} 
+		edge = new Edge[E+1];
 		
 		//Read the edges
 		System.out.print("Reading edges from text file");
 		
 	    for(e = 1; e <= E; ++e)
-	    {
+		{
 			line = reader.readLine();
 			parts = line.split(splits);
-			u = int.Parse(parts[0]);
-			v = int.Parse(parts[1]); 
-			w = int.Parse(parts[2]);
+			u = Integer.parseInt(parts[0]);
+			v = Integer.parseInt(parts[1]); 
+			w = Integer.parseInt(parts[2]);
 			
-			System.out.print("Edge {0}--({1})--{2}", toChar(u), w, toChar(v));    
+			System.out.println("Edge " + toChar(u) + "--(" + w + ")--" + toChar(v));    
 			 
 			t = new Node();
 			t.wgt = wgt;
@@ -251,7 +270,7 @@ class Graph
 		mst = new Edge[V-1];
 
 		//Priority queue for indices of array of edges
-		//Missing code
+		Heap h = new Heap(E, edge);
 
 		//Create partition of singleton sets for the vertices
 		//Missing code
@@ -278,7 +297,7 @@ class Graph
 		{
 			mst[e].show(); 
 		}
-		//Console.WriteLine();
+		System.out.println();
 	   
 	}
 	
@@ -295,7 +314,7 @@ public class Kruskal
 
 		Graph g = new Graph(fname);
 
-		g.MST_Kruskal();
+		//g.MST_Kruskal();
 
 		g.showMST();
 
