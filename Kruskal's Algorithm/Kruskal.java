@@ -116,7 +116,11 @@ class UnionFindSets
 	{
 		N = V;
 		treeParent = new int[V+1];
-		// missing lines	   
+		
+		for(int i = 1; i <= N; i++)
+		{
+			treeParent[i] = i;
+		}	   
 	}
 	
 	public void makeSet(x)
@@ -126,18 +130,15 @@ class UnionFindSets
 
 	public int findSet(int vertex)
 	{
-		if(treeParent[vertex] == vertex)
+		while(vertex != treeParent[vertex])
 		{
-			return vertex;
+			vertex = treeParent[vertex];
 		}
-		else
-		{
-			return findSet(treeParent[vertex]);
-		}
-	
+		
+		return vertex;
 	}
 	
-	public void union( int set1, int set2)
+	public void union(int set1, int set2)
 	{
 		int xRoot = findSet(set1);
 		int yRoot = findSet(set2);
@@ -230,21 +231,20 @@ class Graph
 			u = Integer.parseInt(parts[0]);
 			v = Integer.parseInt(parts[1]); 
 			w = Integer.parseInt(parts[2]);
-			
-			System.out.println("Edge " + toChar(u) + "--(" + w + ")--" + toChar(v));    
-			 
-			t = new Node();
-			t.wgt = wgt;
-			t.vert = v;
-			t.next = adj[u];
-			adj[u] = t;
-
-			t = new Node();
-			t.wgt = wgt;
-			t.vert = u;
-			t.next = adj[v];
-			adj[v] = t;
+			    
+			Edge e1 = new Edge();
+			e1.u = u;
+			e1.v = v;
+			e1.wgt = w;
+			edge[e] = e1; 
+			System.out.println("Edge {0}--({1})--{2}", toChar(u), w, toChar(v));  
 		}
+		
+		for(e = 1; e <= E; ++e)
+	    {
+			System.out.println("\n edge[{0}] = {1}, {2}, {3} ", e, edge[e].u, edge[e].v, edge[e].wgt);
+		}
+		System.out.println("\n\n");
 	}
 	
 	/**********************************************************
