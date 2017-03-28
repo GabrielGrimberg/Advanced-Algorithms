@@ -23,7 +23,7 @@ class Edge
 
 	public Edge(int x, int y, int w) 
 	{
-		;// missing lines
+		
 	}
 	
 	public void show() 
@@ -70,32 +70,26 @@ class Heap
 	
 	private void siftDown(int k) 
 	{
-		int v =  h[k];
-		int j = 2 * k;
+		int v, j;
+		v = h[k];
 		
-		//If you have a left child.
-		while(j <= N)
+		while(2 * k <= N)
 		{
-			if(j < N && h[j + 1] > h[j])
+			j = 2 * k;
+			
+			if((j < N) && (edge[h[j+1]].wgt < edge[h[j]].wgt))
 			{
 				++j;
 			}
-
-			if(v >= h[j])
+			if(edge[v].wgt <= edge[h[j]].wgt)
 			{
-				System.exit(0);
+				break;
 			}
-			else
-			{
-				h[k] = h[j];
-				k = j;
-				j = 2 * k;
-			}
-
+			
+			h[k] = h[j];
+			k = j;
 		}
-
 		h[k] = v;
-		
 	}
 
 	public int remove() 
