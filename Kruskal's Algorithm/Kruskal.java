@@ -28,10 +28,10 @@ class Edge
 	
 	public void show() 
 	{
-		System.out.print("Edge {0}-{1}-{2}\n",toChar(u), wgt, toChar(v)) ;
+		System.out.print("Edge  {" + toChar(u) + "}-{" + wgt + "}-{" + toChar(v) + "}\n") ;
 	}
 	
-	// convert vertex into char for pretty printing
+	//Convert vertex into char for pretty printing
 	private char toChar(int u)
 	{  
 		return (char)(u + 64);
@@ -122,11 +122,6 @@ class UnionFindSets
 			treeParent[i] = i;
 		}	   
 	}
-	
-	public void makeSet(x)
-	{
-		treeParent[x] = x;
-	}
 
 	public int findSet(int vertex)
 	{
@@ -151,7 +146,7 @@ class UnionFindSets
 		int i;
 		for(i = 1; i <= N; ++i)
 		{
-			System.out.print("{0}->{1}  ", toChar(i), toChar(treeParent[i]));
+			System.out.print("{" + toChar(i) + "} -> {" + toChar(treeParent[i]) + "}  ");
 		}
 		System.out.print("\n");
 	}
@@ -183,7 +178,7 @@ class UnionFindSets
 		{
 			if(findSet(v) == root)
 			{
-				System.out.print(toChar(v) + " ");
+				System.out.print(toChar(v) + "");
 			}
 		}
 		System.out.print("}  ");
@@ -237,26 +232,54 @@ class Graph
 			e1.v = v;
 			e1.wgt = w;
 			edge[e] = e1; 
-			System.out.println("Edge {0}--({1})--{2}", toChar(u), w, toChar(v));  
+			System.out.println("Edge {" + toChar(u) + "}--({" + w + "})--{" + toChar(v) + "}");  
 		}
 		
 		for(e = 1; e <= E; ++e)
 	    {
-			System.out.println("\n edge[{0}] = {1}, {2}, {3} ", e, edge[e].u, edge[e].v, edge[e].wgt);
+			System.out.println("\nEdge[{" + e + "}] = {" + edge[e].u + "}, {" + edge[e].v + "}, {" + edge[e].wgt + "}");
 		}
 		System.out.println("\n\n");
 	}
 	
-	/**********************************************************
-	*
-	*       Kruskal's minimum spanning tree algorithm
-	*
-	**********************************************************/
+	/************************************************************
+	*															*
+	*       Kruskal's minimum spanning tree algorithm           *
+	*															*
+	*************************************************************/
+	/*
+	MST_Kruskal() 
+	BEGIN
+		// Input is simple connected graph represented by array of edges edge[] // Output is list of edges T in MST
+		// Create a partition for the set of vertices
+		foreach vertex v   V
+			Cv := {v}
+		
+		// create a minHeap h from array of edges E 
+		h := new Heap( E)
+		
+		// let T be an initially empty tree 
+		T := 0  
+		
+		while size(T) < n-1
+			(u, v, wgt) := h.removeMin() 
+			Cv := findSet(v)
+			Cu := findSet(u)
+			
+			if Cu   Cv
+				union(Cu , Cv)
+				T := T   {(u, v, wgt)} 
+		
+		return T
+		
+	END
+	*/
 	public Edge[] MST_Kruskal() 
 	{
 		int ei, i = 0;
 		Edge e;
 		int uSet, vSet;
+		int wgt_sum = 0;
 		UnionFindSets partition;
 		
 		//Create edge array to store MST
@@ -267,16 +290,28 @@ class Graph
 		Heap h = new Heap(E, edge);
 
 		//Create partition of singleton sets for the vertices
-		//Missing code
+		partition = new UnionFindSets(V);
 		partition.showSets();
 
 		while(i < V-1) 
 		{
-	 
+			ei = h.remove();
+			
+			e = edge[ei];
+			uSet = partition.findSet(e.u);
+			vSet = partition.findSet(e.v);
+			
+			if(uSet != vSet)
+			{
+				partition.union(uSet, vSet);
+				mst[i++] = e;
+				wgt_sum += e.wgt;
+			}
 		}
+		System.out.println("Weight of MST is: " + wgt_sum );
+		
 		return mst;
 	}
-
 
 	//Convert vertex into char for pretty printing
 	private char toChar(int u)
@@ -286,7 +321,7 @@ class Graph
 
 	public void showMST()
 	{
-		System.out.print("\nMinimum spanning tree build from following edges:\n");
+		System.out.print("\n\nMinimum spanning tree build from following edges:\n");
 		for(int e = 0; e < V - 1; ++e) 
 		{
 			mst[e].show(); 
@@ -303,12 +338,12 @@ public class Kruskal
 	{
 		Scanner in = new Scanner(System.in);
 		
-		System.out.print("\nInput name of file with graph definition: ");
+		System.out.print("Enter the name of the graph with the .txt extension: ");
 		String fname = in.nextLine();
 
 		Graph g = new Graph(fname);
 
-		//g.MST_Kruskal();
+		g.MST_Kruskal();
 
 		g.showMST();
 
