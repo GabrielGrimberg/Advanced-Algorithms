@@ -23,7 +23,9 @@ class Edge
 
 	public Edge(int x, int y, int w) 
 	{
-		
+		u = x;
+		v = y;
+		wgt = w;	
 	}
 	
 	public void show() 
@@ -195,10 +197,10 @@ class Graph
 { 
 	private int V, E;
 	private Edge[] edge;
-	private Edge[] mst;        
-
+	private Edge[] mst;   
+	
 	public Graph(String graphFile) throws IOException
-	{
+	{	
 		int u, v;
 		int w, e;
 
@@ -212,7 +214,7 @@ class Graph
 		
 		V = Integer.parseInt(parts[0]);
 		E = Integer.parseInt(parts[1]);
-		
+				
 		//Create edge array
 		edge = new Edge[E+1];
 		
@@ -237,11 +239,12 @@ class Graph
 		
 		for(e = 1; e <= E; ++e)
 	    {
-			System.out.println("\nEdge[{" + e + "}] = {" + edge[e].u + "}, {" + edge[e].v + "}, {" + edge[e].wgt + "}");
+			System.out.println("\nEdge[{" + toChar(e) + "}] = {" + toChar(edge[e].u) + "} to {" + toChar(edge[e].v) + "} -> Weight: " + edge[e].wgt );
 		}
 		System.out.println("\n\n");
+		
 	}
-	
+		
 	/************************************************************
 	*															*
 	*       Kruskal's minimum spanning tree algorithm           *
@@ -332,7 +335,7 @@ class Graph
 	
 }
 
-public class Kruskal
+public class KruskalTrees
 {
 	public static void main(String args[]) throws IOException 
 	{
