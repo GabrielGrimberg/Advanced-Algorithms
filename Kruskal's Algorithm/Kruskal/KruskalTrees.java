@@ -9,7 +9,6 @@
 import java.io.*;
 import java.util.Scanner;
 
-//Convert vertex into char for pretty printing 
 class Edge 
 {
 	public int u, v, wgt;
@@ -219,7 +218,7 @@ class Graph
 		edge = new Edge[E+1];
 		
 		//Read the edges
-		System.out.print("Reading edges from text file");
+		System.out.print("Reading edges from text file\n");
 		
 	    for(e = 1; e <= E; ++e)
 		{
