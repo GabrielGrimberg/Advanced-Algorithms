@@ -173,11 +173,11 @@ class UnionFindSets
         int v;
         System.out.print("Set{");
         
-        for(v=1; v<=N; ++v)
+        for(v = 1; v <= N; ++v)
         {
             if(findSet(v) == root)
             {
-                System.out.print(toChar(v) + " ");
+                System.out.print(toChar(v) + "");
             }
         }
         System.out.print("}  ");
@@ -208,15 +208,15 @@ class Graph
         String splits = " +";  // multiple whitespace as delimiter
 		String line = reader.readLine();        
         String[] parts = line.split(splits);
-        System.out.println("Parts[] = " + parts[0] + " " + parts[1]);
+        System.out.println("\nVertices = " + parts[0] + " Edges = " + parts[1]);
         
         V = Integer.parseInt(parts[0]);
         E = Integer.parseInt(parts[1]);
         
-        // create edge array
+        //Create edge array
         edge = new Edge[E+1];   
         
-       // read the edges
+        //Read the edges
         System.out.println("Reading edges from text file");
         for(e = 1; e <= E; ++e)
         {
@@ -226,11 +226,12 @@ class Graph
             v = Integer.parseInt(parts[1]); 
             w = Integer.parseInt(parts[2]);
             
-            System.out.println("Edge " + toChar(u) + "--(" + w + ")--" + toChar(v));                         
+            System.out.println("Edge " + toChar(u) + "--(" + w + ")--" + toChar(v));                        
              
             //Creating the edge object.
             edge[e] = new Edge(u, v, w); 
         }
+        System.out.println("\n");
     }
 
 
@@ -271,16 +272,17 @@ class Graph
         int ei, i = 0;
         Edge e;
         int uSet, vSet;
+        int totalWeight = 0;
         UnionFindSets partition;
         
-        // create edge array to store MST
-        // Initially it has no edges.
+        //Create edge array to store MST
+        //Initially it has no edges.
         mst = new Edge[V-1];
     
-        // priority queue for indices of array of edges
+        //Priority queue for indices of array of edges
         Heap h = new Heap(E, edge);
     
-        // create partition of singleton sets for the vertices
+        //Create partition of singleton sets for the vertices
         partition = new  UnionFindSets(V);
         partition.showSets();
         
@@ -299,8 +301,9 @@ class Graph
                 System.out.print("\n" + i + ": ");
                 e.show();
                 partition.union(uSet, vSet);
-                //partition.showSet();
+                partition.showSets();
                 partition.showTrees();
+                totalWeight += e.wgt;
             }
             else
             {
@@ -308,6 +311,10 @@ class Graph
                 e.show();
             }
         }
+        System.out.println("\n");
+        System.out.println("------------------------");
+        System.out.println("- Weight of MST is: " + totalWeight + " -");
+        System.out.println("------------------------");
         return mst;
     }
     
@@ -345,5 +352,6 @@ public class KruskalTrees
         g.MST_Kruskal();
 
         g.showMST();
-    }        
+    }  
+          
 }//End of KruskalTrees Class. 
