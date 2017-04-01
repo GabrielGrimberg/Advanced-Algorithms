@@ -22,9 +22,9 @@ class Edge
 
     public Edge(int x, int y, int w) 
     {
-        u = x;
-        v = y;
-        wgt = w;	
+        this.u = x;
+        this.v = y;
+        this.wgt = w;	
     }
     
     public void show() 
@@ -63,7 +63,7 @@ class Heap
            
         //Then convert h[] into a heap
         //From the bottom up.
-        for(i = N/2; i > 0; --i)
+        for(i = N / 2; i > 0; --i)
         {
             siftDown(i);
         }
@@ -146,8 +146,10 @@ class UnionFindSets
     public void showTrees()
     {
         int i;
-        for(i=1; i<=N; ++i)
+        for(i = 1; i <= N; ++i)
+        {
             System.out.print(toChar(i) + "->" + toChar(treeParent[i]) + "  " );
+        }
         System.out.print("\n");
     }
     
@@ -156,7 +158,7 @@ class UnionFindSets
         int u, root;
         int[] shown = new int[N+1];
         
-        for (u=1; u<=N; ++u)
+        for (u = 1; u <= N; ++u)
         {   
             root = findSet(u);
             if(shown[root] != 1) 
@@ -205,26 +207,28 @@ class Graph
         FileReader fr = new FileReader(graphFile);
 		BufferedReader reader = new BufferedReader(fr);
 	           
-        String splits = " +";  // multiple whitespace as delimiter
+        String splits = " +";  //Multiple whitespace as delimiter
 		String line = reader.readLine();        
         String[] parts = line.split(splits);
         System.out.println("\nVertices = " + parts[0] + " Edges = " + parts[1]);
         
-        V = Integer.parseInt(parts[0]);
-        E = Integer.parseInt(parts[1]);
+        V = Integer.parseInt(parts[0]); //How many Vertices.
+        E = Integer.parseInt(parts[1]); //How many Edges.
         
         //Create edge array
         edge = new Edge[E+1];   
         
         //Read the edges
         System.out.println("Reading edges from text file");
+        System.out.println("Graph below in order of: Node, Weight and Node");
+        
         for(e = 1; e <= E; ++e)
         {
             line = reader.readLine();
             parts = line.split(splits);
-            u = Integer.parseInt(parts[0]);
-            v = Integer.parseInt(parts[1]); 
-            w = Integer.parseInt(parts[2]);
+            u = Integer.parseInt(parts[0]); //u is the First Node.
+            v = Integer.parseInt(parts[1]); //v is the Node Connected to the first one.
+            w = Integer.parseInt(parts[2]); //w is the weight between the 2 nodes.
             
             System.out.println("Edge " + toChar(u) + "--(" + w + ")--" + toChar(v));                        
              
@@ -237,7 +241,7 @@ class Graph
 
     /**************************************************************
     *															  *
-    *        Kruskal's minimum spanning tree algorithm           *
+    *        Kruskal's minimum spanning tree algorithm            *
     *															  *
     **************************************************************/
     /*
@@ -311,6 +315,8 @@ class Graph
                 e.show();
             }
         }
+        
+        //Displaying the weight of the graph.
         System.out.println("\n");
         System.out.println("------------------------");
         System.out.println("- Weight of MST is: " + totalWeight + " -");
@@ -345,12 +351,17 @@ public class KruskalTrees
         Scanner in = new Scanner(System.in);
             
         System.out.print("Enter the name of the graph with the .txt extension: ");
+        
+        //Entering the name of the text file with the graph in it.
         String fname = in.nextLine();
-
+        
+        //Creating the graph from the file.
         Graph g = new Graph(fname);
-
+        
+        //Getting the shortest patch using the algorithm.
         g.MST_Kruskal();
-
+        
+        //Displaying the shortest path made.
         g.showMST();
     }  
           
