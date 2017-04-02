@@ -168,7 +168,7 @@ class Graph
         String splits = " +";
 		String line = reader.readLine();        
         String[] parts = line.split(splits);
-        System.out.println("Parts[] = " + parts[0] + " " + parts[1]);
+        System.out.println("\nVertices = " + parts[0] + " Edges = " + parts[1]);
         
         V = Integer.parseInt(parts[0]);
         E = Integer.parseInt(parts[1]);
@@ -187,6 +187,8 @@ class Graph
         
         //Read the edges
         System.out.println("Reading edges from text file");
+        System.out.println("Graph below in order of: Node, Weight and Node");
+        
         for(e = 1; e <= E; ++e)
         {
             line = reader.readLine();
@@ -225,6 +227,7 @@ class Graph
         int v;
         Node n;
         
+        System.out.println("\nNodes connected to each other with distance.");
         for(v = 1; v <= V; ++v)
         {
             System.out.print("\nadj[" + toChar(v) + "] ->" );
@@ -338,7 +341,11 @@ class Graph
                 }
             }
         }
-        System.out.print("\n\nWeight of MST = " + wgt_sum + "\n");
+        //Displaying the weight of the graph.
+        System.out.println("\n");
+        System.out.println("------------------------");
+        System.out.println("- Weight of MST is: " + wgt_sum + " -");
+        System.out.println("------------------------");
         
         mst = parent;                      		
 	}
