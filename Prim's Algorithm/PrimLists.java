@@ -340,6 +340,22 @@ class Graph
                     }
                 }
             }
+            
+            //Contents of Dist[] and Parent[] Array Step by Step.
+            System.out.println("\n");
+            
+            for(int i = 1; i <= V; ++i)  
+            {
+                System.out.println("Parent Array");
+                System.out.println(toChar(i) + " -> " + toChar(parent[i]));
+            }
+            System.out.println("\n");
+            
+            for(int x = 1; x <= V; ++x)  
+            {
+                System.out.println("Dist[] Array");
+                System.out.println(x + " OR " + toChar(x) + " -> " + dist[x] );
+            }	
         }
         //Displaying the weight of the graph.
         System.out.println("\n");
