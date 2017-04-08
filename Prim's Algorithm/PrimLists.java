@@ -241,38 +241,6 @@ class Graph
         System.out.println("");
     }
     
-    /*
-    Prim_Lists( Vertex s ) 
-    Begin
-        foreach v   V              // G = (V, E)
-            dist[v] :=  Infinity 
-            parent[v] := 0         // treat 0 as a special null vertex
-            hPos[v] := 0           // indicates that v   heap
-            
-        h = new Heap(|V|, hPos, dist) // priority queue (heap) initially empty
-        h.insert(s)                 // s will be the root of the MST
-        
-        while (not h.isEmpty() )    // should repeat |V|-1 times
-            v := h.remove()         // add v to the MST
-            dist[v] := -dist[v]     // marks v as now in the MST
-            
-            foreach u   adj(v)      // examine each neighbour u of v
-            
-                if wgt(v, u) < dist[u] 
-                    dist[u] := wgt(v, u)
-                    parent[u] := v
-            
-                    if u   h
-                        h.insert( u)
-                    else
-                        h.siftUp( hPos[u])
-                
-                end if 
-            end for
-        end while
-        return parent 
-    End
-    */
 	public void MST_Prim(int s)
 	{
         int v, u;
@@ -341,7 +309,8 @@ class Graph
                 }
             }
             
-            //Contents of Dist[] and Parent[] Array Step by Step.
+            /*
+            //Contents of Dist[] and Parent[] Array Step by Step. *For Report Purposes*
             System.out.println("\n");
             
             for(int i = 1; i <= V; ++i)  
@@ -356,6 +325,7 @@ class Graph
                 System.out.println("Dist[] Array");
                 System.out.println(x + " OR " + toChar(x) + " -> " + dist[x] );
             }	
+            */
         }
         //Displaying the weight of the graph.
         System.out.println("\n");
