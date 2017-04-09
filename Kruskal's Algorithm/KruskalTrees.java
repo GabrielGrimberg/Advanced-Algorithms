@@ -244,33 +244,6 @@ class Graph
     *        Kruskal's minimum spanning tree algorithm            *
     *															  *
     **************************************************************/
-    /*
-    MST_Kruskal() 
-    BEGIN
-        // Input is simple connected graph represented by array of edges edge[] // Output is list of edges T in MST
-        // Create a partition for the set of vertices
-        foreach vertex v   V
-            Cv := {v}
-            
-        // create a minHeap h from array of edges E 
-        h := new Heap( E)
-            
-        // let T be an initially empty tree 
-        T := 0  
-            
-        while size(T) < n-1
-            (u, v, wgt) := h.removeMin() 
-            Cv := findSet(v)
-            Cu := findSet(u)
-                
-            if Cu   Cv
-                union(Cu , Cv)
-                T := T   {(u, v, wgt)} 
-            
-        return T
-            
-    END
-    */
     public Edge[] MST_Kruskal() 
     {
         int ei, i = 0;
@@ -314,6 +287,7 @@ class Graph
                 System.out.print("\nIgnoring ");
                 e.show();
             }
+            
         }
         
         //Displaying the weight of the graph.
