@@ -13,7 +13,7 @@ A repository for my learning and understandings of complex Algorithms that are g
   telecommunications company laying out a cable into a new neighborhood.
 - Standard Algorithms: Prim's Algorithm and Kruskal Algorithm (Both of them are greedy algorithms).
 
-### Prim's Algorithm
+## Prim's Algorithm
 The way Prim's Algorithm works is:
 - The algorithm continuously increases the size of a tree, one edge at a time, starting with a tree consisting of a single vertex, until it spans all vertices.
 
@@ -28,7 +28,7 @@ Furthermore, adjacency lists use only the required memory for sparse graphs and 
 
 Better to use an adjacency matrix for a dense graph, in which case which gives complexity O(V^2) and adjacency lists for sparse graphs O(V log2 V).
 
-### Kruskal Algorithm
+## Kruskal Algorithm
 The way Kruskal Algorithm works is:
 - We sort the edges according to their edge weights.
 - This can be done with a Mergesort or a Quicksort.
@@ -45,7 +45,7 @@ If the edges are sorted: The algorithm will be quasi-linear.
 If we multiply the weights with a constant or add a constant to the edge weights: The results will be the same.
 In this algorithm, the spanning trees are invariant under the transformation of these weights.
 
-### Breadth First Search
+## Breadth First Search
 When you have a graph and you want to visit every node, you can do it using this algorithm. Has serveral applications such as being used in the Dijkstra algorithm if all the edges weights are equal to one and in artificial intelligence.
 
 ##### Information
@@ -62,7 +62,7 @@ This Breadth First Search is written in Java and uses the queue iteration.
 - Iteration Breadth First Traversal for the adjacency matrix.
 - Method to display the graph representation.
 
-### Depth First Search
+## Depth First Search
 In computer science there are many useful algorithms that operate on a graph data structure such as Depth First Search. Before this is implemented we need to consider how graphs are stored in computer memory. Saving it on text file is good as it can be used a secondary storage.
 
 ##### Information
@@ -78,3 +78,15 @@ This Depth First Search is written in Java, uses recursion as it's more compact 
 - Method to initialise Depth First Traversal of Graph.
 - Recursive Depth First Traversal for the adjacency matrix.
 - Method to display the graph representation.
+
+## Topological Ordering
+Topological ordering of a directed graph is a linear ordering of its vertices such that for every directed edge "uv" from vertex "u" to vertex "v", "u" comes before v in the ordering.
+
+For example in a game you would have a quest although that quest may have requirements such as completing other quests in order to complete this quest.
+
+##### Information
+- Time Complexity: Linear.
+- We can use topological ordering only if the graph has no directed cycles.
+- Important in project management.
+
+As mentioned above the applications for Topological Ordering can be used in games such as quests and tasks. It can also be used in universities at constructing the syllabus.
