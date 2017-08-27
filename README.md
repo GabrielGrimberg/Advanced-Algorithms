@@ -80,7 +80,7 @@ This Depth First Search is written in Java, uses recursion as it's more compact 
 - Method to display the graph representation.
 
 ## Topological Ordering
-Topological ordering of a directed graph is a linear ordering of its vertices such that for every directed edge "uv" from vertex "u" to vertex "v", "u" comes before v in the ordering.
+Topological ordering of a directed graph is a linear ordering of its vertices such that for every directed edge "uv" from vertex "u" to vertex "v", "u" comes before "v" in the ordering.
 
 For example in a game you would have a quest although that quest may have requirements such as completing other quests in order to complete this quest.
 
@@ -90,3 +90,11 @@ For example in a game you would have a quest although that quest may have requir
 - Important in project management.
 
 As mentioned above the applications for Topological Ordering can be used in games such as quests and tasks. It can also be used in universities at constructing the syllabus.
+
+## Cycle Detection
+Cycle detection is quite intuitive. Detecting cycles in a directed graph is what we want.
+
+##### Information
+- Time Complexity: O(|V|+|E|).
+- Most of the time we want to avoid cycles, operating systems can have several processes, for example we have process A and it is waiting for process B, the process B is waiting for process C and process C is waiting for process A, so it's kind of like a deadlock operation.
+- The operating system will freeze so we have to avoid cycles.
