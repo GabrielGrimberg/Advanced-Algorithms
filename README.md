@@ -11,7 +11,13 @@ A repository for my learning and understandings of complex Algorithms that are g
   the weight of every other spanning tree.
 - Spannings Trees have a lot of applications such as Big Data Analysis, finding the minimum cost for a
   telecommunications company laying out a cable into a new neighborhood.
-- Standard Algorithms: Prim's Algorithm and Kruskal Algorithm (Both of them are greedy algorithms).
+- Standard Algorithms: **Prim's Algorithm** and **Kruskal Algorithm** (Both of them are greedy algorithms).
+
+## Shortest Path
+- **Shortest Path Problem**: Finding a path between two vertices in a graph such that the sum of the weights of its edges is minimized.
+- For example, consider the fact that we would like to use **Google Maps** in order to get from one city to another. In the background Google has a directed huge graph and it's going to run the shortest path algorithm.
+- Standard Algorithms: **Dijkstra Algorithm**, **Bellman-Ford Algorithm**, **A* Algorithm** and **Floyd-Warshall Algorithm**.
+- What's important is that we can model the whole map of the world with the help of a directed graph and basically this is exactly what's happening behind **Google Maps**.
 
 ## Prim's Algorithm
 The way Prim's Algorithm works is:
@@ -98,3 +104,15 @@ Cycle detection is quite intuitive. Detecting cycles in a directed graph is what
 - Time Complexity: O(|V|+|E|).
 - Most of the time we want to avoid cycles, operating systems can have several processes, for example we have process A and it is waiting for process B, the process B is waiting for process C and process C is waiting for process A, so it's kind of like a deadlock operation.
 - The operating system will freeze so we have to avoid cycles.
+
+## Dijkstra Algorithm
+- It can handle **positive** edge wegiths. So the edge between two edges must be greater than zero.
+- It can find the shortest path from A to B, but it is able to consturct a shortest path tree as well which defines the shortest path from a source to all the other nodes. So we are able to calculate the shortest passed three at once and then we can use the shortest path tree from a given source, the disadvantage is that if the soruce has changed, for example we have caluclated to get from Dublin to Cork, but if we are standing at Galway then we are not able to reuse this shortest path tree as the starting point has changed.
+- So we can reuse the shortest path tree but if the source has changed then we have to recalculate it.
+- This is asymptotically the fastest known single-source shortest-path algorithm for arbitary directed graphs with unbounded non-negative weights.
+
+##### Information
+- Time Complexity: O(V * logV+E).
+- It is a greedy algorithm, it tries to find the global optimum with the help of the local minimum which turns out to be good.
+- On every iteration we want to find the minimum distance to the next vertex pssobile.
+- Data Structures Used: **Heaps** (**Binary** or **Fibonacci**) or in general a **Priority Queue**.
