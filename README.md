@@ -2,6 +2,17 @@
 
 A repository for my learning and understandings of complex Algorithms that are graph related in Java.
 
+## Content
+1. Spanning Trees
+2. Shortest Path
+3. Prim's Algorithm
+4. Kruskal Algorithm
+5. Breadth First Search
+6. Depth First Search
+7. Topological Ordering
+8. Cycle Detection
+9. Dijkstra Algorithm
+
 ## Spanning Trees
 - A spanning tree of an undirected G graph is a subgraph that includes all the vertices of the G graph, 
   but it usually doesn't include all the edges of this given graph.
