@@ -3,15 +3,15 @@
 A repository for my learning and understandings of complex Algorithms that are graph related in Java.
 
 ## Content
-1. Spanning Trees
-2. Shortest Path
-3. Prim's Algorithm
-4. Kruskal Algorithm
-5. Breadth First Search
-6. Depth First Search
-7. Topological Ordering
-8. Cycle Detection
-9. Dijkstra Algorithm
+1. **Spanning Trees**
+2. **Prim's Algorithm**
+3. **Kruskal Algorithm**
+4. **Breadth First Search**
+5. **Depth First Search**
+6. **Topological Ordering**
+7. **Cycle Detection**
+8. **Shortest Path**
+9. **Dijkstra Algorithm**
 
 ## Spanning Trees
 - A spanning tree of an undirected G graph is a subgraph that includes all the vertices of the G graph, 
@@ -23,12 +23,6 @@ A repository for my learning and understandings of complex Algorithms that are g
 - Spannings Trees have a lot of applications such as Big Data Analysis, finding the minimum cost for a
   telecommunications company laying out a cable into a new neighborhood.
 - Standard Algorithms: **Prim's Algorithm** and **Kruskal Algorithm** (Both of them are greedy algorithms).
-
-## Shortest Path
-- **Shortest Path Problem**: Finding a path between two vertices in a graph such that the sum of the weights of its edges is minimized.
-- For example, consider the fact that we would like to use **Google Maps** in order to get from one city to another. In the background Google has a directed huge graph and it's going to run the shortest path algorithm.
-- Standard Algorithms: **Dijkstra Algorithm**, **Bellman-Ford Algorithm**, **A* Algorithm** and **Floyd-Warshall Algorithm**.
-- What's important is that we can model the whole map of the world with the help of a directed graph and basically this is exactly what's happening behind **Google Maps**.
 
 ## Prim's Algorithm
 The way Prim's Algorithm works is:
@@ -115,6 +109,12 @@ Cycle detection is quite intuitive. Detecting cycles in a directed graph is what
 - Time Complexity: O(|V|+|E|).
 - Most of the time we want to avoid cycles, operating systems can have several processes, for example we have process A and it is waiting for process B, the process B is waiting for process C and process C is waiting for process A, so it's kind of like a deadlock operation.
 - The operating system will freeze so we have to avoid cycles.
+
+## Shortest Path
+- **Shortest Path Problem**: Finding a path between two vertices in a graph such that the sum of the weights of its edges is minimized.
+- For example, consider the fact that we would like to use **Google Maps** in order to get from one city to another. In the background Google has a directed huge graph and it's going to run the shortest path algorithm.
+- Standard Algorithms: **Dijkstra Algorithm**, **Bellman-Ford Algorithm**, **A* Algorithm** and **Floyd-Warshall Algorithm**.
+- What's important is that we can model the whole map of the world with the help of a directed graph and basically this is exactly what's happening behind **Google Maps**.
 
 ## Dijkstra Algorithm
 - It can handle **positive** edge wegiths. So the edge between two edges must be greater than zero.
