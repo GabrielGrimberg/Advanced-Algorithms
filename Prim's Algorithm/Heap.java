@@ -7,9 +7,6 @@
 	Class: Heap
 */
 
-import java.io.*;
-import java.util.Scanner; //For keyboard input.
-
 class Heap {
 	
 	private int[] h;	   // Heap array

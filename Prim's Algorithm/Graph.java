@@ -8,7 +8,7 @@
 */
 
 import java.io.*;
-import java.util.Scanner; //For keyboard input.
+import java.util.Scanner;
 
 class Graph {
 	class Node {
@@ -18,20 +18,20 @@ class Graph {
 		public Node next;
 	}
 	
-	//V = number of vertices
-	//E = number of edges
-	//adj[] is the adjacency lists array
+	// V = number of vertices.
+	// E = number of edges.
+	// adj[] is the adjacency lists array.
 	private int V, E;
 	private Node[] adj;
 	private Node z;
 	private int[] mst;
 	
-	//Used for traversing graph
+	// Used for traversing graph.
 	private int[] visited;
 	private int id;
 	
 	
-	//Default constructor
+	// Default constructor.
 	public Graph(String graphFile)  throws IOException {
 		
 		int u, v;
@@ -41,7 +41,7 @@ class Graph {
 		FileReader fr = new FileReader(graphFile);
 		BufferedReader reader = new BufferedReader(fr);
 
-		//Multiple whitespace as delimiter
+		// Multiple whitespace as delimiter.
 		String splits = " +";
 		String line = reader.readLine();        
 		String[] parts = line.split(splits);
@@ -50,16 +50,16 @@ class Graph {
 		V = Integer.parseInt(parts[0]);
 		E = Integer.parseInt(parts[1]);
 		
-		//Create sentinel node
+		// Create sentinel node.
 		z = new Node(); 
 		z.next = z;
 		
-		//Create adjacency lists, initialised to sentinel node z       
+		// Create adjacency lists, initialised to sentinel node z.     
 		adj = new Node[V+1];
 		
 		for(v = 1; v <= V; ++v) { adj[v] = z; }
 		
-		//Read the edges
+		// Read the edges.
 		System.out.println("Reading edges from text file");
 		System.out.println("Graph below in order of: Node, Weight and Node");
 		
@@ -73,7 +73,7 @@ class Graph {
 			
 			System.out.println("Edge " + toChar(u) + "--(" + wgt + ")--" + toChar(v));    
 			
-			//Putting edge into adjacency matrix into the linked list.
+			// Putting edge into adjacency matrix into the linked list.
 			t = new Node();
 			t.wgt = wgt;
 			t.vert = v;
@@ -89,13 +89,13 @@ class Graph {
 		}	       
 	}
    
-	//Convert vertex into char for pretty printing
+	// Convert vertex into char for pretty printing.
 	private char toChar(int u) {
 		  
 		return (char)(u + 64);
 	}
 		
-	//Method to display the graph representation
+	// Method to display the graph representation.
 	public void display() {
 		int v;
 		Node n;
@@ -105,7 +105,7 @@ class Graph {
 		for(v = 1; v <= V; ++v) {
 			System.out.print("\nadj[" + toChar(v) + "] ->" );
 			
-			//Go through the vertices, for each one start at the beginning of the Linked List.
+			// Go through the vertices, for each one start at the beginning of the Linked List.
 			for(n = adj[v]; n != z; n = n.next) {
 				
 				System.out.print(" |" + toChar(n.vert) + " | " + n.wgt + "| ->");    
@@ -121,40 +121,40 @@ class Graph {
 		int[]  dist, parent, hPos;
 		Node t;
 
-		dist = new int[V + 1];      //Distance from node to node.
-		parent = new int[V + 1];    //Parent node.
-		hPos = new int[V + 1];      //Current heap position.
+		dist = new int[V + 1];      // Distance from node to node.
+		parent = new int[V + 1];    // Parent node.
+		hPos = new int[V + 1];      // Current heap position.
 		
 		
 		for(v = 0; v <= V; v++) {
 				
-			dist[v] = Integer.MAX_VALUE; //Set to infinity.
+			dist[v] = Integer.MAX_VALUE; // Set to infinity.
 			
-			parent[v] = 0; //Treat 0 as a special null vertex.
+			parent[v] = 0; // Treat 0 as a special null vertex.
 			
-			hPos[v] = 0; //Indicates that it's not on the heap.
+			hPos[v] = 0; // Indicates that it's not on the heap.
 		}
 		
-		//Creating a new empty priority heap.
-		//V is the max size of the heap array.
+		// Creating a new empty priority heap.
+		// V is the max size of the heap array.
 		Heap pq =  new Heap(V, dist, hPos);
 		
-		//Insert first element into the heap, s is used a the root of the MST.
+		// Insert first element into the heap, s is used a the root of the MST.
 		pq.insert(s);
 		
-		//Set the distance to 0.
+		// Set the distance to 0.
 		dist[s] = 0;
 		
 		
 		while (!pq.isEmpty()) {
 			
-			v = pq.remove(); //Adding V to the MST.
-			dist[v] = -dist[v]; //Marking V as in the MST.
+			v = pq.remove(); 	// Adding V to the MST.
+			dist[v] = -dist[v]; // Marking V as in the MST.
 			
 			Node n;
 			int w;
 			
-			//Examine each neighbour u of v.
+			// Examine each neighbour u of v.
 			for (n = adj[v]; n != z; n = n.next) {
 				
 				u = n.vert;
@@ -201,7 +201,7 @@ class Graph {
 			*/
 		}
 		
-		//Displaying the weight of the graph.
+		// Displaying the weight of the graph.
 		System.out.println("\n");
 		System.out.println("------------------------");
 		System.out.println("- Weight of MST is: " + wgt_sum + " -");
