@@ -6,36 +6,30 @@
 
 import java.util.Stack;
 
-public class TODFS 
-{
+public class TODFS {
 
 	private Stack<Vertex> stack;
 	
-	public TODFS()
-	{
+	public TODFS() {
 		this.stack = new Stack<>();
 	}
 	
-	//Implementing in a recursive manner.
-	public void DFS(Vertex vertex)
-	{
+	// Implementing in a recursive manner.
+	public void DFS(Vertex vertex) {
 	
 		vertex.setVisited(true);
 		
-		for(Vertex v : vertex.getNeighbourList())
-		{
-			if( !v.isVisited())
-			{
-				DFS(v);
-			}
+		for(Vertex v : vertex.getNeighbourList()) {
+			
+			if( !v.isVisited()) { DFS(v); }
 		}
 		
-		//Pushing a visited vertex onto the stack.
+		// Pushing a visited vertex onto the stack.
 		stack.push(vertex);
 	}
 	
-	public Stack<Vertex> getStack()
-	{
+	public Stack<Vertex> getStack() {
+		
 		return this.stack;
 	}
 }

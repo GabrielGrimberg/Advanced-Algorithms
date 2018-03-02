@@ -8,10 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class TopologicalOrder 
-{
-	public static void main(String[] args) 
-	{
+public class TopologicalOrder {
+	public static void main(String[] args) {
 		
 		TODFS topologicalOrdering = new TODFS();
 		
@@ -33,18 +31,17 @@ public class TopologicalOrder
 		graph.get(5).addNeighbour(graph.get(2));
 		graph.get(6).addNeighbour(graph.get(3));
 		
-		for(int i = 0; i < graph.size(); i++)
-		{
-			if( !graph.get(i).isVisited())
-			{
+		for(int i = 0; i < graph.size(); i++) {
+			
+			if( !graph.get(i).isVisited()) {
+				
 				topologicalOrdering.DFS(graph.get(i));
 			}
 		}
 		
 		Stack<Vertex> stack = topologicalOrdering.getStack();
 		
-		for(int i = 0; i < graph.size(); i++)
-		{
+		for(int i = 0; i < graph.size(); i++) {
 			Vertex vertex = stack.pop();
 			System.out.print(vertex+"->");
 		}
