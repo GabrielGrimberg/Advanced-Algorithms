@@ -7,12 +7,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class CycleMain 
-{
+public class CycleMain {
 
-	public static void main(String[] args) 
-	{
-		//Creating new vertices.
+	public static void main(String[] args) {
+		
+		// Creating new vertices.
 		Vertex vertex1 = new Vertex("1");
 		Vertex vertex2 = new Vertex("2");
 		Vertex vertex3 = new Vertex("3");
@@ -20,7 +19,7 @@ public class CycleMain
 		Vertex vertex5 = new Vertex("5");
 		Vertex vertex6 = new Vertex("6");
 		
-		//Adding the neighbours of a vertex.
+		// Adding the neighbours of a vertex.
 		vertex1.addNeighbour(vertex2);
 		vertex2.addNeighbour(vertex3);
 		vertex3.addNeighbour(vertex1);
@@ -36,7 +35,6 @@ public class CycleMain
 		vertexList.add(vertex4);
 		vertexList.add(vertex5);
 		vertexList.add(vertex6);
-		
 		
 		CycleDetection cycleDetection = new CycleDetection();
 		
