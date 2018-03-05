@@ -7,10 +7,9 @@
 
 import java.io.*;
 
-class Queue 
-{
-	private class Node 
-	{
+class Queue {
+	
+	private class Node {
 		int data;
 		Node next;
 	}
@@ -19,22 +18,22 @@ class Queue
 	Node head;
 	Node tail;
 
-	public Queue() 
-	{
+	public Queue() {
+		
 		z = new Node(); 
 		z.next = z;
 		head = z;  
 		tail = null;
 	}
 	
-	public void display() 
-	{
+	public void display() {
+		
 		System.out.println("\nThe queue values are:\n");
 
 		Node temp = head;
 		
-		while( temp != temp.next) 
-		{
+		while( temp != temp.next) {
+			
 			System.out.print( temp.data + "  ");
 			temp = temp.next;
 		}
@@ -42,22 +41,20 @@ class Queue
 		System.out.println("\n");
 	}
 
-	public void enQueue( int x) 
-	{
+	public void enQueue( int x) {
+		
 		Node temp;
 
 		temp = new Node();
 		temp.data = x;
 		temp.next = z;
 		
-		//Case of empty list
-		if(head == z)
-		{
-			head = temp;
-		}
-		//Case of list not empty
-		else
-		{
+		// Case of empty list.
+		if(head == z) { 
+			head = temp; 
+			
+		} else { //Case of list not empty.
+		
 			tail.next = temp;
 		}
 
@@ -65,15 +62,15 @@ class Queue
 	}
 
 
-	//Assume the queue is non-empty when this method is called
-	public int deQueue() 
-	{
-		if(head == head.next)
-		{
+	// Assume the queue is non-empty when this method is called.
+	public int deQueue() {
+		
+		if(head == head.next) {
+			
 			return -1;
-		}
-		else 
-		{
+			
+		} else {
+			
 			int temp = head.data;
 			
 			head = head.next;
@@ -82,21 +79,18 @@ class Queue
 		}
 	}
 
-	public boolean isEmpty() 
-	{
+	public boolean isEmpty() {
+		
 		return head == head.next;
 	}
 
-	public boolean isMember(int x) 
-	{
+	public boolean isMember(int x) {
+		
 		Node temp = head;
 		
-		while(temp != z) 
-		{
-			if(temp.data == x)
-			{
-				return true;
-			}
+		while(temp != z) {
+			
+			if(temp.data == x) { return true; }
 			
 			temp = temp.next;
 		}
@@ -106,21 +100,20 @@ class Queue
 	
 }
 
-class BreadthFirstSearch 
-{
-	// V = number of vertices
-	// E = number of edges
-	// adj[ ][ ] is the adjacency matrix
+class BreadthFirstSearch {
+	
+	// V = number of vertices.
+	// E = number of edges.
+	// adj[ ][ ] is the adjacency matrix.
 	private int V, E;
 	private int[][] adj;
 		
-	//Used for traversing graph
+	// Used for traversing graph.
 	private int[] visited;
 	private int id;
 	 
-	//Default constructor
-	public BreadthFirstSearch(String graphFile)  throws IOException
-	{
+	public BreadthFirstSearch(String graphFile)  throws IOException {
+		
 		int u, v;
 		int e, wgt;
 
@@ -143,8 +136,8 @@ class BreadthFirstSearch
 		System.out.println("Reading edges from text file");
 		System.out.println(" ");
 		
-		for(e = 1; e <= E; ++e)
-		{
+		for(e = 1; e <= E; ++e) {
+			
 			line = reader.readLine();
 			parts = line.split(splits);
 			u = Integer.parseInt(parts[0]);
@@ -158,22 +151,19 @@ class BreadthFirstSearch
 		}	       
 	}
 	
-	//Convert vertex into char for pretty printing
-	private char toChar(int u)
-	{  
-		return (char)(u + 64);
-	}
+	// Convert vertex into char for pretty printing.
+	private char toChar(int u) { return (char)(u + 64); }
 	
-	public void display() 
-	{
+	public void display() {
+		
 		int u,v;
 		
-		for(v = 1; v <= V; ++v)
-		{
+		for(v = 1; v <= V; ++v) {
+			
 			System.out.print("\nadj[" + v + "] = ");
 			
-			for(u = 1; u <= V; ++u)
-			{
+			for(u = 1; u <= V; ++u) {
+				
 				System.out.print("  " + adj[u][v]);
 			}    
 			 
@@ -202,31 +192,31 @@ class BreadthFirstSearch
 		end while End
 	END
 	*/
-	public void BF(int s)
-	{
+	public void BF(int s) {
+		
 		Queue q = new Queue();
 		
 		id = 0;
 		
-		for(int v = 0; v < V; v++)
-		{
+		for(int v = 0; v < V; v++) {
+			
 			visited[v] = 0;
 		}
 		q.enQueue(s);
 		
-		while(!q.isEmpty())
-		{
+		while(!q.isEmpty()) {
+			
 			int v = q.deQueue();
 			
-			if(visited[v] == 0) 
-			{
+			if(visited[v] == 0) {
+				
 				visited[v] = ++id;
 				System.out.print(toChar(v) + " -> ");
 				
-				for(int u=1; u<adj[v].length; u++) 
-				{ 
-					if(visited[u] == 0) 
-					{ 
+				for(int u=1; u<adj[v].length; u++) {
+					 
+					if(visited[u] == 0) {
+						 
 						q.enQueue(u);
 					}						
 				}			
@@ -235,8 +225,8 @@ class BreadthFirstSearch
 	}
 	
 
-	public static void main(String[] args) throws IOException
-	{
+	public static void main(String[] args) throws IOException {
+		
 		int s = 2;
 		String fname = "GraphExample.txt";               
 
