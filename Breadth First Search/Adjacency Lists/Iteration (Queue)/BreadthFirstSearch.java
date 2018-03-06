@@ -7,10 +7,10 @@
 
 import java.io.*;
 
-class Queue 
-{
-	private class Node 
-	{
+class Queue {
+	
+	private class Node {
+		
 		int data;
 		Node next;
 	}
@@ -19,61 +19,60 @@ class Queue
 	Node head;
 	Node tail;
 	
-	public Queue() 
-	{
+	public Queue() {
+		
 		z = new Node(); 
 		z.next = z;
 		head = z;  
 		tail = null;
 	}
 
-	public void display() 
-	{
+	public void display() {
+		
 		System.out.println("\nThe queue values are:\n");
 
 		Node temp = head;
 		
-		while( temp != temp.next) 
-		{
+		while( temp != temp.next) {
+			
 			System.out.print( temp.data + "  ");
 			temp = temp.next;
 		}
 		System.out.println("\n");
 	}
 
-	public void enQueue( int x) 
-	{
+	public void enQueue( int x) {
+		
 		Node temp;
 
 		temp = new Node();
 		temp.data = x;
 		temp.next = z;
 		
-		//Case of empty list
-		if(head == z)
-		{
+		// Case of empty list.
+		if(head == z) {
+			
 			head = temp;
-		}
-		//Case of list not empty
-		else
-		{
+			
+		} else { //Case of list not empty.
+			
 			tail.next = temp;
 		}
 		
-		//New node is now at the tail
+		// New node is now at the tail.
 		tail = temp;
 	}
 
 
-	//Assume the queue is non-empty when this method is called
-	public int deQueue() 
-	{
-		if(head == head.next)
-		{
+	// Assume the queue is non-empty when this method is called.
+	public int deQueue() {
+		
+		if(head == head.next) {
+			
 			return -1;
 		}
-		else 
-		{
+		else {
+			
 			int temp = head.data;
 			
 			head = head.next;
@@ -82,18 +81,19 @@ class Queue
 		}
 	}
 
-	public boolean isEmpty() 
-	{
+	public boolean isEmpty() {
+		
 			return head == head.next;
 	}
 
-	public boolean isMember(int x) 
-	{
+	public boolean isMember(int x) {
+		
 		Node temp = head;
-		while (temp != z) 
-		{
-			if (temp.data == x)
-			{
+		
+		while (temp != z) {
+			
+			if (temp.data == x) {
+				
 				return true;
 			}
 			
@@ -105,29 +105,29 @@ class Queue
 	
 }
 
-class BreadthFirstSearch
-{
-	class Node 
-	{
+class BreadthFirstSearch {
+	
+	class Node {
+		
 			public int vert;
 			public int wgt;
 			public Node next;
 	}
 		
-	// V = number of vertices
-	// E = number of edges
-	// adj[] is the adjacency lists array
+	// V = number of vertices.
+	// E = number of edges.
+	// adj[] is the adjacency lists array.
 	private int V, E;
 	private Node[] adj;
 	private Node z;
 		
-	//Used for traversing graph
+	// Used for traversing graph.
 	private int[] visited;
 	private int id;
 		
-	//Default constructor
-	public BreadthFirstSearch(String graphFile)  throws IOException
-	{
+	// Default constructor.
+	public BreadthFirstSearch(String graphFile)  throws IOException {
+		
 		int u, v;
 		int e, wgt;
 		Node t;
@@ -135,7 +135,7 @@ class BreadthFirstSearch
 		FileReader fr = new FileReader(graphFile);
 		BufferedReader reader = new BufferedReader(fr);
 	           
-		String splits = " +";  //Multiple whitespace as delimiter
+		String splits = " +";  // Multiple whitespace as delimiter.
 		String line = reader.readLine();        
 		String[] parts = line.split(splits);
 		System.out.println(" ");
@@ -144,15 +144,16 @@ class BreadthFirstSearch
 		V = Integer.parseInt(parts[0]);
 		E = Integer.parseInt(parts[1]);
 				
-		//Create sentinel node
+		// Create sentinel node.
 		z = new Node(); 
 		z.next = z;
 				
-		//Create adjacency lists, initialised to sentinel node z
+		// Create adjacency lists, initialised to sentinel node z.
 		visited = new int[V+1];
 		adj = new Node[V + 1];
-		for(v = 1; v <= V; ++v)
-		{
+		
+		for(v = 1; v <= V; ++v) {
+			
 			adj[v] = z;               
 		}
 			
@@ -160,9 +161,9 @@ class BreadthFirstSearch
 			
 		System.out.println(" ");
 		
-		//Read the edges	
-		for(e = 1; e <= E; ++e)
-		{
+		// Read the edges.	
+		for(e = 1; e <= E; ++e) {
+			
 			line = reader.readLine();
 			parts = line.split(splits);
 			u = Integer.parseInt(parts[0]);
@@ -171,30 +172,31 @@ class BreadthFirstSearch
 						
 			System.out.println("Edge " + toChar(u) + "--(" + wgt + ")--" + toChar(v));    
 				
-			//Insert new values into the linked list.
+			// Insert new values into the linked list.
 			insert(u, wgt, v); 
 			insert(v, wgt, u);
 			
 		}	   
 	}
 	 
-	//Convert vertex into char for pretty printing
-	private char toChar(int u)
-	{  
+	// Convert vertex into char for pretty printing.
+	private char toChar(int u) {
+		  
 		return (char)(u + 64);
 	}
 	
-	//Method to display the graph representation
-	public void display() 
-	{
+	// Method to display the graph representation.
+	public void display() {
+		
 		int v;
 		Node n;
 				
-		for(v = 1; v <= V; ++v)
-		{
+		for(v = 1; v <= V; ++v) {
+			
 			System.out.print("\nadj[" + toChar(v) + "] ->" );
-			for(n = adj[v]; n != z; n = n.next)
-			{
+			
+			for(n = adj[v]; n != z; n = n.next) {
+				
 				System.out.print(" |" + toChar(n.vert) + " | " + n.wgt + "| ->");   
 			} 
 		}
@@ -202,9 +204,9 @@ class BreadthFirstSearch
 		System.out.println("");
 	}
 	
-	//Method to insert new values into the linked list.		
-	public void insert(int i, int x, int vert)
-	{
+	// Method to insert new values into the linked list.		
+	public void insert(int i, int x, int vert) {
+		
 		Node node = new Node();
 		node.wgt = x;
 		node.vert = vert;
@@ -214,34 +216,34 @@ class BreadthFirstSearch
 	}
 
 	
-	public void BF(int s)
-	{
+	public void BF(int s) {
+		
 		Queue q = new Queue();
 		
 		id = 0;
 			
-		for(int v = 0; v < V; v++)
-		{
+		for(int v = 0; v < V; v++) {
+			
 			visited[v] = 0;
 		}
 			
 		q.enQueue(s);
 			
-		while(!q.isEmpty())
-		{
+		while(!q.isEmpty() ) {
+			
 			int v = q.deQueue();
 		
-			if(visited[v] == 0) 
-			{
+			if(visited[v] == 0) {
+				
 				visited[v] = ++id;
 				System.out.print(toChar(v) + " -> ");
 					
 				Node n = new Node();
 				
-				for(n = adj[v]; n != z; n = n.next) 
-				{ 
-					if(visited[n.vert] == 0 && n.wgt !=  0) 
-					{ 
+				for(n = adj[v]; n != z; n = n.next) {
+					 
+					if(visited[n.vert] == 0 && n.wgt !=  0) {
+						 
 						q.enQueue(n.vert);
 					}						
 				}			
@@ -249,8 +251,9 @@ class BreadthFirstSearch
 		}
 	}
 	
-	public static void main(String[] args) throws IOException
-	{
+	// Main.
+	public static void main(String[] args) throws IOException {
+		
 		int s = 2;
 		String fname = "GraphExample.txt";               
 
