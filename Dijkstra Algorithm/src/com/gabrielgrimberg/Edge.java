@@ -16,7 +16,6 @@ public class Edge {
     private Vertex targetVertex;
 
     public Edge(double eWeight, Vertex startVertex, Vertex targetVertex) {
-
         this.eWeight = eWeight;
         this.startVertex = startVertex;
         this.targetVertex = targetVertex;
