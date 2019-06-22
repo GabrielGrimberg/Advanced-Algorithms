@@ -1,60 +1,38 @@
 # Advanced Algorithms
 
-A repository for my learning and understandings of complex Algorithms that are graph related in Java.
+## Introduction
+- This repository mainly contains algorithms that are used in grpahs, these algorithms that are included in this repository are written in Java.
 
-## Content
-1. **Spanning Trees**
-2. **Prim's Algorithm**
-3. **Kruskal Algorithm**
-4. **Breadth First Search**
-5. **Depth First Search**
-6. **Topological Ordering**
-7. **Cycle Detection**
+- It's important to note that *graphs* are mathematical structures to model pairwise relations between given objects.
+- A graph is made up of *vertices* and *nodes*.
+
+- There are two types of grpahs: *Directed* and *Undirected* graphs. A directed graph contains edges that are directed, for example there is only one way connection going from vertex A to B. An undirected graph contains edges that are not directed.
+
+- There are two ways to model these graphs in programming languages: *Adjacency Matrix* and *Edge List Representation*.
+
+**Adjacency Matrixes**: Diagram to be added.
+
+**Edge List Representation**: Diagram to be added.
+
+**Usage for these Algorithms**:
+- Shortest path algoritms such as in GPS where we would like the quickest route to get from A to B.
+
+- Graph Traversing: Such as making a web crawler in which it uses the DFS and BFS algorithms as they are very important for a web crawler, Google relies heavily on web crawling.
+
+- Spanning Trees.
+
+## Contents
+1. **Breadth First Search**
+2. **Depth First Search**
+3. **Topological Ordering**
+4. **Cycle Detection**
+
+5. **Spanning Trees**
+6. **Prim's Algorithm**
+7. **Kruskal Algorithm**
+
 8. **Shortest Path**
 9. **Dijkstra Algorithm**
-
-## Spanning Trees
-- A spanning tree of an undirected G graph is a subgraph that includes all the vertices of the G graph, 
-  but it usually doesn't include all the edges of this given graph.
-- In general, a tree may have several spanning trees.
-- We can assign a weight to each edge.
-- A minimum spanning tree is then a spanning tree with weight less than or equal to 
-  the weight of every other spanning tree.
-- Spannings Trees have a lot of applications such as Big Data Analysis, finding the minimum cost for a
-  telecommunications company laying out a cable into a new neighborhood.
-- Standard Algorithms: **Prim's Algorithm** and **Kruskal Algorithm** (Both of them are greedy algorithms).
-
-## Prim's Algorithm
-The way Prim's Algorithm works is:
-- The algorithm continuously increases the size of a tree, one edge at a time, starting with a tree consisting of a single vertex, until it spans all vertices.
-
-##### Information
-- Prim's algorithm is a greedy algorithm that finds a minimum spanning tree for a connected weighted undirected graph.
-- This means it finds a subset of the edges that forms a tree that includes every vertex, where the total weight of all the edges in the tree is minimized.
-- Time Complexity for: Binary heap and adjacency lists for sparse graph = O(V^2).
-- Time Complexity for: Adjacency matrix for dense or sparse graph = O(V^2 logV).
-- Time Complexity for: Fibonacci heap and adjacency list = O( E + V log V ).
-
-Furthermore, adjacency lists use only the required memory for sparse graphs and are more efficient space wise for sparse graphs. Matrix representation is very inefficient both memory wise and in performance for sparse graphs.
-
-Better to use an adjacency matrix for a dense graph, in which case which gives complexity O(V^2) and adjacency lists for sparse graphs O(V log2 V).
-
-## Kruskal Algorithm
-The way Kruskal Algorithm works is:
-- We sort the edges according to their edge weights.
-- This can be done with a Mergesort or a Quicksort.
-- Then we must use a union find data structure also known as disjoint set. So we start adding edges to the MST and we want to make sure there will be no cycle in the MST.
-
-##### Information
-- Kruskal Algorithm is often used in computer networking.
-- Time Complexity: O(N*LogN) with Mergesort or Quicksort.
-- Worst Case : O(E*LogE). E is for the edges in the graph.
-- Memory Complexity: Depending on the approach you take for example priority queue or sort the edge weights.
-
-This algorithm can be used for huge graphs.
-If the edges are sorted: The algorithm will be quasi-linear.
-If we multiply the weights with a constant or add a constant to the edge weights: The results will be the same.
-In this algorithm, the spanning trees are invariant under the transformation of these weights.
 
 ## Breadth First Search
 When you have a graph and you want to visit every node, you can do it using this algorithm. Has serveral applications such as being used in the Dijkstra algorithm if all the edges weights are equal to one and in artificial intelligence.
@@ -110,6 +88,49 @@ Cycle detection is quite intuitive. Detecting cycles in a directed graph is what
 - Most of the time we want to avoid cycles, operating systems can have several processes, for example we have process A and it is waiting for process B, the process B is waiting for process C and process C is waiting for process A, so it's kind of like a deadlock operation.
 - The operating system will freeze so we have to avoid cycles.
 
+## Spanning Trees
+- A spanning tree of an undirected G graph is a subgraph that includes all the vertices of the G graph, 
+  but it usually doesn't include all the edges of this given graph.
+- In general, a tree may have several spanning trees.
+- We can assign a weight to each edge.
+- A minimum spanning tree is then a spanning tree with weight less than or equal to 
+  the weight of every other spanning tree.
+- Spannings Trees have a lot of applications such as Big Data Analysis, finding the minimum cost for a
+  telecommunications company laying out a cable into a new neighborhood.
+- Standard Algorithms: **Prim's Algorithm** and **Kruskal Algorithm** (Both of them are greedy algorithms).
+
+## Prim's Algorithm
+The way Prim's Algorithm works is:
+- The algorithm continuously increases the size of a tree, one edge at a time, starting with a tree consisting of a single vertex, until it spans all vertices.
+
+##### Information
+- Prim's algorithm is a greedy algorithm that finds a minimum spanning tree for a connected weighted undirected graph.
+- This means it finds a subset of the edges that forms a tree that includes every vertex, where the total weight of all the edges in the tree is minimized.
+- Time Complexity for: Binary heap and adjacency lists for sparse graph = O(V^2).
+- Time Complexity for: Adjacency matrix for dense or sparse graph = O(V^2 logV).
+- Time Complexity for: Fibonacci heap and adjacency list = O( E + V log V ).
+
+Furthermore, adjacency lists use only the required memory for sparse graphs and are more efficient space wise for sparse graphs. Matrix representation is very inefficient both memory wise and in performance for sparse graphs.
+
+Better to use an adjacency matrix for a dense graph, in which case which gives complexity O(V^2) and adjacency lists for sparse graphs O(V log2 V).
+
+## Kruskal Algorithm
+The way Kruskal Algorithm works is:
+- We sort the edges according to their edge weights.
+- This can be done with a Mergesort or a Quicksort.
+- Then we must use a union find data structure also known as disjoint set. So we start adding edges to the MST and we want to make sure there will be no cycle in the MST.
+
+##### Information
+- Kruskal Algorithm is often used in computer networking.
+- Time Complexity: O(N*LogN) with Mergesort or Quicksort.
+- Worst Case : O(E*LogE). E is for the edges in the graph.
+- Memory Complexity: Depending on the approach you take for example priority queue or sort the edge weights.
+
+This algorithm can be used for huge graphs.
+If the edges are sorted: The algorithm will be quasi-linear.
+If we multiply the weights with a constant or add a constant to the edge weights: The results will be the same.
+In this algorithm, the spanning trees are invariant under the transformation of these weights.
+
 ## Shortest Path
 - **Shortest Path Problem**: Finding a path between two vertices in a graph such that the sum of the weights of its edges is minimized.
 - For example, consider the fact that we would like to use **Google Maps** in order to get from one city to another. In the background Google has a directed huge graph and it's going to run the shortest path algorithm.
@@ -117,7 +138,7 @@ Cycle detection is quite intuitive. Detecting cycles in a directed graph is what
 - What's important is that we can model the whole map of the world with the help of a directed graph and basically this is exactly what's happening behind **Google Maps**.
 
 ## Dijkstra Algorithm
-- It can handle **positive** edge wegiths. So the edge between two edges must be greater than zero.
+- It can handle **positive** edge weights. So the edge between two edges must be greater than zero.
 - It can find the shortest path from A to B, but it is able to consturct a shortest path tree as well which defines the shortest path from a source to all the other nodes. So we are able to calculate the shortest passed three at once and then we can use the shortest path tree from a given source, the disadvantage is that if the soruce has changed, for example we have caluclated to get from Dublin to Cork, but if we are standing at Galway then we are not able to reuse this shortest path tree as the starting point has changed.
 - So we can reuse the shortest path tree but if the source has changed then we have to recalculate it.
 - This is asymptotically the fastest known single-source shortest-path algorithm for arbitary directed graphs with unbounded non-negative weights.
