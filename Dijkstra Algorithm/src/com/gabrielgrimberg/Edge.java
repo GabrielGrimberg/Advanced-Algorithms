@@ -1,6 +1,6 @@
 /***
  * Project Name: Dijkstra Algorithm
- * Date: 18th of March 2018
+ * Date: 22nd of June 2019
  * Class: Edge
  * Type: Edge weight class.
  ***/
