@@ -3,18 +3,14 @@
 ## Introduction
 - This repository mainly contains algorithms that are used in grpahs, these algorithms that are included in this repository are written in Java.
 
-- It's important to note that *graphs* are mathematical structures to model pairwise relations between given objects.
-- A graph is made up of *vertices* and *nodes*.
+- It's important to note that **graphs** are mathematical structures to model pairwise relations between given objects.
+- A graph is made up of **vertices** and **nodes**.
 
-- There are two types of grpahs: *Directed* and *Undirected* graphs. A directed graph contains edges that are directed, for example there is only one way connection going from vertex A to B. An undirected graph contains edges that are not directed.
+- There are two types of grpahs: **Directed** and **Undirected** graphs. A directed graph contains edges that are directed, for example there is only one way connection going from vertex A to B. An undirected graph contains edges that are not directed.
 
-- There are two ways to model these graphs in programming languages: *Adjacency Matrix* and *Edge List Representation*.
+- There are two ways to model these graphs in programming languages: **Adjacency Matrix** and **Edge List Representation**.
 
-**Adjacency Matrixes**: Diagram to be added.
-
-**Edge List Representation**: Diagram to be added.
-
-**Usage for these Algorithms**:
+##### Usage for these Algorithms
 - Shortest path algoritms such as in GPS where we would like the quickest route to get from A to B.
 
 - Graph Traversing: Such as making a web crawler in which it uses the DFS and BFS algorithms as they are very important for a web crawler, Google relies heavily on web crawling.
@@ -26,11 +22,9 @@
 2. **Depth First Search**
 3. **Topological Ordering**
 4. **Cycle Detection**
-
 5. **Spanning Trees**
 6. **Prim's Algorithm**
 7. **Kruskal Algorithm**
-
 8. **Shortest Path**
 9. **Dijkstra Algorithm**
 
@@ -148,3 +142,14 @@ In this algorithm, the spanning trees are invariant under the transformation of 
 - It is a greedy algorithm, it tries to find the global optimum with the help of the local minimum which turns out to be good.
 - On every iteration we want to find the minimum distance to the next vertex pssobile.
 - Data Structures Used: **Heaps** (**Binary** or **Fibonacci**) or in general a **Priority Queue**.
+
+## Bellman-Ford Algorithm
+- It is slower than Dijkstra's Algorithm but more robust as in it can handle negative edge weights too.
+- Dijkstra's Algorithm greedily chooses the edge with the lowest cost. Bellman-Ford relaxes all of the edges at the same time for V (Vertex) - 1 iteration. For Dijkstra's Algorithm it relaxes a single edge at the same time.
+
+##### Information
+- Time Complexity: O(V * E).
+- It does a V (Vertex) - 1 iteration to detect cycles, if the cost decreases in the V -th iteration, then there is a negative cycle, because all the paths are traversen up to the V - 1 iteration. We are sure that if we make another iteration and the total cost decreases then there is a negative cycle.
+
+##### Note
+- When it comes to real life scenarios, there are no negative cycles at all, but sometimes we may transform a problem into a graph with positive or negative edge weights and it may look for some negative cycles. For example, when dealing with stock markets such as Forex related data we are able to find arbitrary (data that can contain anything) situations and reduce the risk of making less money as we are looking for these negative cycles, so in this situation it is crucial to find these negative cycles.
