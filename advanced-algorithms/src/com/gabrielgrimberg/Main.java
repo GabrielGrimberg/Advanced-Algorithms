@@ -1,10 +1,13 @@
 package com.gabrielgrimberg;
 
-import static com.gabrielgrimberg.algorithms.topologicalsort.TopologicalOrder.topologicalOrder;
+import java.io.IOException;
+
+import static com.gabrielgrimberg.algorithm.prim.Prim.prim;
 
 public class Main {
 
-    public static void main(String[] args) {
-        topologicalOrder();
+    public static void main(String[] args) throws IOException {
+        //topologicalOrder();
+        //prim();
     }
 }
