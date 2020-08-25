@@ -1,4 +1,4 @@
-package com.gabrielgrimberg.algorithm.topologicalsort;
+package com.gabrielgrimberg.algorithm.topological;
 
 import java.util.Stack;
 

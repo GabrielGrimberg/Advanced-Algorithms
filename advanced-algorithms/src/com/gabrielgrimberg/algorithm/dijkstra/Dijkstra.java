@@ -1,15 +1,8 @@
-/***
- * Project Name: Dijkstra Algorithm
- * Date: 22nd of June 2019
- * Class: Main
- * Type: Testing the application - Running the application.
- ***/
+package com.gabrielgrimberg.algorithm.dijkstra;
 
-package com.gabrielgrimberg;
+public class Dijkstra {
 
-public class Main {
-
-    public static void main(String[] args) {
+    public static void dijkstra() {
 
         // Creating vertices
         Vertex sampleVertexOne = new Vertex("A");
@@ -29,6 +22,5 @@ public class Main {
 
         // Print out the shortest path to get from A to C.
         System.out.println(algorithm.getShortestPathTo(sampleVertexThree));
-
     }
 }

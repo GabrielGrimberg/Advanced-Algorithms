@@ -1,11 +1,4 @@
-/***
- * Project Name: Dijkstra Algorithm
- * Date: 22nd of June 2019
- * Class: Vertex
- * Type: Represent the vertices in the graph.
- ***/
-
-package com.gabrielgrimberg;
+package com.gabrielgrimberg.algorithm.dijkstra;
 
 import java.util.ArrayList;
 import java.util.List;

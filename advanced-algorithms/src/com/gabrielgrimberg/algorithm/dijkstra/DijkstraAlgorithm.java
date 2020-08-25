@@ -1,11 +1,4 @@
-/***
- * Project Name: Dijkstra Algorithm
- * Date: 22nd of June 2019
- * Class: DijkstraAlgorithm
- * Type: Implementation of the algorithm.
- ***/
-
-package com.gabrielgrimberg;
+package com.gabrielgrimberg.algorithm.dijkstra;
 
 import java.util.ArrayList;
 import java.util.Collections;

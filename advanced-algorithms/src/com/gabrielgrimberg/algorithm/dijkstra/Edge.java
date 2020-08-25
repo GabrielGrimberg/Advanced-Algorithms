@@ -1,11 +1,4 @@
-/***
- * Project Name: Dijkstra Algorithm
- * Date: 22nd of June 2019
- * Class: Edge
- * Type: Edge weight class.
- ***/
-
-package com.gabrielgrimberg;
+package com.gabrielgrimberg.algorithm.dijkstra;
 
 public class Edge {
 
