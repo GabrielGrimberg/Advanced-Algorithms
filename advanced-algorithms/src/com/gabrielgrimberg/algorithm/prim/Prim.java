@@ -9,7 +9,7 @@ public class Prim {
 
         Scanner keyInput = new Scanner(System.in);
 
-        String filePath = "resources/prim/graph/graph-example.txt";
+        String filePath = "resources/prim/graph/graph-prim-example.txt";
 
         System.out.println("Enter the vertex you wish to start on : ");
         int startVertex = keyInput.nextInt();
