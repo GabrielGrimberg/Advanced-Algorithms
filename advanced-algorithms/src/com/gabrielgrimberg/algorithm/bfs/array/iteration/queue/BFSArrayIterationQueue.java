@@ -1,106 +1,10 @@
-/* 
-	Name: Gabriel Grimberg
-	Course: DT228/2
-	Module: Algorithms & Data Structures
-	Type: Breadh First Search (Array + Iterative Version: Queue)
-*/
+package com.gabrielgrimberg.algorithm.bfs.array.iteration.queue;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
-class Queue {
-	
-	private class Node {
-		int data;
-		Node next;
-	}
-
-	Node z;
-	Node head;
-	Node tail;
-
-	public Queue() {
-		
-		z = new Node(); 
-		z.next = z;
-		head = z;  
-		tail = null;
-	}
-	
-	public void display() {
-		
-		System.out.println("\nThe queue values are:\n");
-
-		Node temp = head;
-		
-		while( temp != temp.next) {
-			
-			System.out.print( temp.data + "  ");
-			temp = temp.next;
-		}
-		
-		System.out.println("\n");
-	}
-
-	public void enQueue( int x) {
-		
-		Node temp;
-
-		temp = new Node();
-		temp.data = x;
-		temp.next = z;
-		
-		// Case of empty list.
-		if(head == z) { 
-			head = temp; 
-			
-		} else { //Case of list not empty.
-		
-			tail.next = temp;
-		}
-
-		tail = temp;//New node is now at the tail
-	}
-
-
-	// Assume the queue is non-empty when this method is called.
-	public int deQueue() {
-		
-		if(head == head.next) {
-			
-			return -1;
-			
-		} else {
-			
-			int temp = head.data;
-			
-			head = head.next;
-			
-			return temp;
-		}
-	}
-
-	public boolean isEmpty() {
-		
-		return head == head.next;
-	}
-
-	public boolean isMember(int x) {
-		
-		Node temp = head;
-		
-		while(temp != z) {
-			
-			if(temp.data == x) { return true; }
-			
-			temp = temp.next;
-		}
-		
-		return false;
-	}
-	
-}
-
-class BreadthFirstSearch {
+class BFSArrayIterationQueue {
 	
 	// V = number of vertices.
 	// E = number of edges.
@@ -112,7 +16,7 @@ class BreadthFirstSearch {
 	private int[] visited;
 	private int id;
 	 
-	public BreadthFirstSearch(String graphFile)  throws IOException {
+	public BFSArrayIterationQueue(String graphFile)  throws IOException {
 		
 		int u, v;
 		int e, wgt;
@@ -223,22 +127,4 @@ class BreadthFirstSearch {
 			}	
 		}
 	}
-	
-
-	public static void main(String[] args) throws IOException {
-		
-		int s = 2;
-		String fname = "GraphExample.txt";               
-
-		BreadthFirstSearch g = new BreadthFirstSearch(fname);
-			 
-		g.display();
-		 
-		System.out.println("\n");
-	   	System.out.println("Breadh First Search: ");
-		 
-		g.BF(s);
-
-	}
-
 }
