@@ -1,4 +1,4 @@
-package com.gabrielgrimberg.algorithm.topological;
+package com.gabrielgrimberg.algorithm.topological.sort;
 
 import java.util.ArrayList;
 import java.util.List;
