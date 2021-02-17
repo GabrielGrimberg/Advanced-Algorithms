@@ -1,4 +1,4 @@
-package com.gabrielgrimberg.algorithm.cycle.detection;
+package com.gabrielgrimberg.algorithm.cycledetection;
 
 import java.util.List;
 
